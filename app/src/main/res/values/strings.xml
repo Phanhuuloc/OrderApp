@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name" translatable="false">OrderApp</string>
+    <string name="wc_search_txt" translatable="false">Where are you going to go</string>
+</resources>
