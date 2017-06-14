@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 
@@ -17,7 +16,7 @@ import com.example.oa.orderapp.presenter.fragment.CategoryFragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MenuActivity extends BaseActivity {
+public class ProviderActivity extends BaseActivity {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -30,7 +29,7 @@ public class MenuActivity extends BaseActivity {
     private int countTab = 3;
 
     public static void start(Context context) {
-        Intent i = new Intent(context, MenuActivity.class);
+        Intent i = new Intent(context, ProviderActivity.class);
         context.startActivity(i);
     }
 

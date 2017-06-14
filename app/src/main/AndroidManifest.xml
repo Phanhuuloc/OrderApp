@@ -22,7 +22,7 @@
             android:name=".presenter.ExampleActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".presenter.activity.MenuActivity" />
+        <activity android:name=".presenter.activity.ProviderActivity" />
         <activity
             android:name=".presenter.activity.DetailActivity"
             android:label="@string/title_activity_detail"

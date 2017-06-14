@@ -41,7 +41,7 @@ public class WelcomeActivity extends BaseActivity {
     }
 
     private void onServicesClick() {
-        MenuActivity.start(this);
+        ProviderActivity.start(this);
     }
 
     @OnClick({R.id.wcButton1, R.id.wcButton2, R.id.wcButton3, R.id.wcButton4, R.id.wcButton5, R.id.wcButton6})
