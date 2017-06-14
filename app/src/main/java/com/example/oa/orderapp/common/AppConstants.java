@@ -5,4 +5,5 @@ package com.example.oa.orderapp.common;
  */
 
 public interface AppConstants {
+    public static final String QUARK_SHARE_PREFERENCE = "qSharePref";
 }

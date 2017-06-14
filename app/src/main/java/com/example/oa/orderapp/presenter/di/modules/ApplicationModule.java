@@ -28,6 +28,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import io.realm.Realm;
 
 /**
  * Dagger module that provides objects which will live during the application lifecycle.
@@ -67,4 +68,11 @@ public class ApplicationModule {
 //  @Singleton UserRepository provideUserRepository(UserDataRepository userDataRepository) {
 //    return userDataRepository;
 //  }
+
+//  @Provides
+//  @Singleton
+//  Cache provideCache(Realm realm) {
+//    return new LocalCache(realm);
+//  }
+
 }

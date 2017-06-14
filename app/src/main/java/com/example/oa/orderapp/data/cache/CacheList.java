@@ -15,7 +15,7 @@ import io.realm.RealmObject;
 @Parcel
 public class CacheList<T extends ODObject> extends RealmObject{
 //    private List<T> items;
-    private int count;
+    public int count;
 }
 
 
