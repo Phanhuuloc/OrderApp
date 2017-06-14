@@ -1,4 +1,4 @@
-package com.example.oa.orderapp.ui.adapter;
+package com.example.oa.orderapp.presenter.adapter;
 
 import android.view.View;
 import android.view.ViewGroup;

@@ -1,4 +1,4 @@
-package com.example.oa.orderapp.ui.adapter;
+package com.example.oa.orderapp.presenter.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;

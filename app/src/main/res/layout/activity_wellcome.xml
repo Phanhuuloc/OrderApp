@@ -6,35 +6,82 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="1"
-    tools:context="com.example.oa.orderapp.ui.activity.WellcomeActivity">
+    tools:context="com.example.oa.orderapp.presenter.activity.WelcomeActivity">
 
     <ImageView
         android:id="@+id/wcLogo"
         android:layout_width="match_parent"
         android:layout_height="190dp"
-        android:src="@drawable/logo" />
-
+        android:src="@drawable/logo"
+        android:contentDescription="hi" />
 
     <SearchView
         android:id="@+id/wcSearchview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:iconifiedByDefault="false"
-        android:keepScreenOn="true"
-        android:queryHint="@string/wc_search_txt">
+        android:queryHint="@string/wc_search_txt"
+        android:searchHintIcon="@drawable/item">
 
     </SearchView>
 
-    <GridView
-        android:id="@+id/gridview"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:columnWidth="90dp"
-        android:numColumns="auto_fit"
-        android:verticalSpacing="10dp"
-        android:horizontalSpacing="10dp"
-        android:stretchMode="columnWidth"
-        android:gravity="center"/>
+    <android.support.v7.widget.GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:rowCount="2"
+        app:columnCount="3"
+        android:paddingTop="50dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="50dp"
+        app:useDefaultMargins="true">
+
+        <Button
+            android:id="@+id/wcButton1"
+            android:background="@drawable/item"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1"
+            android:layout_marginBottom="30dp">
+        </Button>
+
+        <Button
+            android:id="@+id/wcButton2"
+            android:background="@drawable/item"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1"
+            android:layout_marginBottom="30dp">
+        </Button>
+
+        <Button
+            android:id="@+id/wcButton3"
+            android:background="@drawable/item"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1"
+            android:layout_marginBottom="30dp">
+        </Button>
+
+        <Button
+            android:id="@+id/wcButton4"
+            android:background="@drawable/item"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1">
+        </Button>
+
+        <Button
+            android:id="@+id/wcButton5"
+            android:background="@drawable/item"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1">
+        </Button>
+
+        <Button
+            android:id="@+id/wcButton6"
+            android:background="@drawable/item"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1">
+        </Button>
+
+    </android.support.v7.widget.GridLayout>
 
 
 </LinearLayout>

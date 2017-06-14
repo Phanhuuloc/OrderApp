@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name" translatable="false">OrderApp</string>
     <string name="wc_search_txt" translatable="false">Where are you going to go</string>
+    <string name="app_menu_title" translatable="false">Menu</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="menu_all">All</string>
+    <string name="menu_near_me">Near me</string>
+    <string name="menu_favorite">Favorite</string>
+    <string name="title_activity_detail">Details</string>
 </resources>

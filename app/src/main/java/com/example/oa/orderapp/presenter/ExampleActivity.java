@@ -1,4 +1,4 @@
-package com.example.oa.orderapp.ui;
+package com.example.oa.orderapp.presenter;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

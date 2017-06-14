@@ -1,4 +1,4 @@
-package com.example.oa.orderapp.ui.view;
+package com.example.oa.orderapp.presenter.view;
 
 import android.content.Context;
 import android.support.annotation.Nullable;

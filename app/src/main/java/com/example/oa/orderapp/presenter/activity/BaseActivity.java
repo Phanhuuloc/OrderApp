@@ -1,4 +1,4 @@
-package com.example.oa.orderapp.ui.activity;
+package com.example.oa.orderapp.presenter.activity;
 
 import android.support.v7.app.AppCompatActivity;
 

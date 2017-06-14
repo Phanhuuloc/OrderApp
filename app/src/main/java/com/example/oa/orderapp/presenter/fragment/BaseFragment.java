@@ -1,4 +1,4 @@
-package com.example.oa.orderapp.ui.fragment;
+package com.example.oa.orderapp.presenter.fragment;
 
 import android.support.v4.app.Fragment;
 
