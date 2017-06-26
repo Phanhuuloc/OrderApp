@@ -29,14 +29,11 @@ import retrofit2.Retrofit;
 public interface ApplicationComponent {
     void inject(BaseActivity baseActivity);
 
-    //Exposed to sub-graphs.
     Context context();
 
     ThreadExecutor threadExecutor();
+
     PostExecutionThread postExecutionThread();
-
-
-    //    CompositeSubscription subscriptions();
 
     Cache cache();
 
