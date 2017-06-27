@@ -1,5 +1,7 @@
 package com.example.oa.orderapp.presenter.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -66,5 +68,10 @@ public class WelcomeActivity extends BaseActivity {
                 onServicesClick();
                 break;
         }
+    }
+
+    public static void start(Context context) {
+        Intent i = new Intent(context,WelcomeActivity.class);
+        context.startActivity(i);
     }
 }

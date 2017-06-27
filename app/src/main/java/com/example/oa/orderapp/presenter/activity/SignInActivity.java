@@ -150,10 +150,12 @@ public class SignInActivity extends BaseActivity implements GoogleApiClient.OnCo
     private void handleSignInResult(GoogleSignInResult result) {
         Log.d(TAG, "handleSignInResult:" + result.isSuccess());
         if (result.isSuccess()) {
-            // Signed in successfully, show authenticated UI.
-            GoogleSignInAccount acct = result.getSignInAccount();
-            status.setText(getString(R.string.signed_in_fmt, acct.getDisplayName()));
-            updateUI(true);
+//            // Signed in successfully, show authenticated UI.
+//            GoogleSignInAccount acct = result.getSignInAccount();
+//            status.setText(getString(R.string.signed_in_fmt, acct.getDisplayName()));
+//            updateUI(true);
+            WelcomeActivity.start(this);
+            finish();
         } else {
             // Signed out, show unauthenticated UI.
             updateUI(false);
