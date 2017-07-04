@@ -2,7 +2,7 @@ package com.example.oa.orderapp.presenter.di.modules;
 
 import android.content.SharedPreferences;
 
-import com.example.oa.orderapp.AndroidApplication;
+import com.example.oa.orderapp.OAApplication;
 import com.example.oa.orderapp.common.AppConstants;
 
 import javax.inject.Singleton;
@@ -22,7 +22,7 @@ public class DataModule implements AppConstants {
 
     @Provides
     @Singleton
-    SharedPreferences provideSharedPrefs(AndroidApplication app) {
+    SharedPreferences provideSharedPrefs(OAApplication app) {
         return app.getSharedPreferences(QUARK_SHARE_PREFERENCE, 0);
     }
 

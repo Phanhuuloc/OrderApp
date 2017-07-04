@@ -18,7 +18,7 @@ package com.example.oa.orderapp.presenter.di.modules;
 import android.content.Context;
 
 
-import com.example.oa.orderapp.AndroidApplication;
+import com.example.oa.orderapp.OAApplication;
 import com.example.oa.orderapp.UIThread;
 import com.example.oa.orderapp.data.executor.JobExecutor;
 import com.example.oa.orderapp.domain.executor.PostExecutionThread;
@@ -28,22 +28,21 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import io.realm.Realm;
 
 /**
  * Dagger module that provides objects which will live during the application lifecycle.
  */
 @Module
 public class ApplicationModule {
-  private final AndroidApplication application;
+  private final OAApplication application;
 
-  public ApplicationModule(AndroidApplication application) {
+  public ApplicationModule(OAApplication application) {
     this.application = application;
   }
 
   @Provides
   @Singleton
-  AndroidApplication provideAndroidApplication() {
+  OAApplication provideAndroidApplication() {
     return this.application;
   }
 

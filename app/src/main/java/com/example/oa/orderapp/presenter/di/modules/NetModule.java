@@ -1,8 +1,6 @@
 package com.example.oa.orderapp.presenter.di.modules;
 
-import android.app.Application;
-
-import com.example.oa.orderapp.AndroidApplication;
+import com.example.oa.orderapp.OAApplication;
 import com.example.oa.orderapp.common.Debug;
 import com.example.oa.orderapp.data.remote.RestApi;
 import com.example.oa.orderapp.data.remote.RestApiImpl;
@@ -46,7 +44,7 @@ public class NetModule {
 
   @Provides
   @Singleton
-  Cache provideHttpCache(AndroidApplication application) {
+  Cache provideHttpCache(OAApplication application) {
     int cacheSize = 10 * 1024 * 1024;
     Cache cache = new Cache(application.getCacheDir(), cacheSize);
     return cache;

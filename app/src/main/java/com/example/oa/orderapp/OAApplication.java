@@ -21,9 +21,9 @@ import io.realm.RealmConfiguration;
 /**
  * Android Main Application
  */
-public class AndroidApplication extends Application implements AppConstants {
+public class OAApplication extends Application implements AppConstants {
 
-    public static AndroidApplication instance = null;
+    public static OAApplication instance = null;
     public static String LANGUAGE_DEVICE = "";
     private ApplicationComponent applicationComponent;
 
@@ -54,7 +54,7 @@ public class AndroidApplication extends Application implements AppConstants {
                 .name(Realm.DEFAULT_REALM_NAME)
                 .modules(Realm.getDefaultModule(), new RealmSharedModule())
                 .schemaVersion(DB_VERSION)
-//                .deleteRealmIfMigrationNeeded()
+                .deleteRealmIfMigrationNeeded()
 //                .migration(new Migration())
 //                .rxFactory(new QuarkRxFactory())
                 .build();
@@ -72,7 +72,7 @@ public class AndroidApplication extends Application implements AppConstants {
     private void initializeInjector() {
         this.applicationComponent = DaggerApplicationComponent.builder()
                 .applicationModule(new ApplicationModule(this))
-                .netModule(new NetModule("192.168.1.11:8040"))
+                .netModule(new NetModule("http://192.168.1.11:8040/"))
                 .build();
     }
 

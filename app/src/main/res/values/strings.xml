@@ -34,4 +34,5 @@
     <string name="loading">Loading…</string>
     <string name="auth_code_fmt">Auth Code: %s</string>
     <string name="id_token_fmt">ID Token: %s</string>
+    <string name="title_activity_oder">OderActivity</string>
 </resources>

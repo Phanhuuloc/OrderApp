@@ -3,6 +3,7 @@
     package="com.example.oa.orderapp">
 
     <application
+        android:name=".OAApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -12,11 +13,13 @@
             android:name=".presenter.activity.WelcomeActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
-            <!--<intent-filter>-->
-            <!--<action android:name="android.intent.action.MAIN" />-->
 
-            <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name=".presenter.ExampleActivity"
@@ -24,7 +27,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".presenter.activity.ProviderActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".presenter.activity.DetailActivity"
             android:label="@string/title_activity_detail"
@@ -38,6 +41,12 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".presenter.activity.OrderActivity"
+            android:label="@string/title_activity_oder"
+            android:theme="@style/AppTheme.NoActionBar">
+
         </activity>
     </application>
 

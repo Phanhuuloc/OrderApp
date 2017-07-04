@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 
+import com.example.oa.orderapp.data.remote.RestApi;
 import com.example.oa.orderapp.data.remote.RetrofitServices;
 import com.example.oa.orderapp.domain.executor.PostExecutionThread;
 import com.example.oa.orderapp.domain.executor.ThreadExecutor;
@@ -51,4 +52,5 @@ public interface ApplicationComponent {
 
     SharedPreferences.Editor editor();
 
+    RestApi restapi();
 }

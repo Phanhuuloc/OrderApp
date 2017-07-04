@@ -5,18 +5,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.example.oa.orderapp.R;
 import com.example.oa.orderapp.data.ODObject;
-import com.example.oa.orderapp.data.Provider;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import butterknife.BindView;
-import butterknife.OnClick;
 
 /**
  * Created by Phoenix on 5/29/17.
