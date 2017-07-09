@@ -2,6 +2,7 @@ package com.example.oa.orderapp.data.remote;
 
 import com.example.oa.orderapp.data.cache.ListMenuCache;
 import com.example.oa.orderapp.data.cache.ListProviderCache;
+import com.example.oa.orderapp.data.local.Provider;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -32,5 +33,10 @@ public class RestApiImpl implements RestApi {
     @Override
     public Observable<ListMenuCache> getListMenu(String name) {
         return this.r.getListMenu(name);
+    }
+
+    @Override
+    public Observable<Provider> getProvider(String uid) {
+        return this.r.getProvider(uid);
     }
 }

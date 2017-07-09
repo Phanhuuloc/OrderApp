@@ -1,14 +1,17 @@
 package com.example.oa.orderapp.presenter.adapter;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.oa.orderapp.R;
-import com.example.oa.orderapp.data.ODObject;
-import com.example.oa.orderapp.presenter.activity.DetailActivity;
+import com.example.oa.orderapp.data.local.Provider;
+import com.example.oa.orderapp.presenter.activity.DetailViewActivity;
+
+import org.parceler.Parcels;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,7 +22,7 @@ import butterknife.OnClick;
  */
 
 class ImageViewHolder extends RecyclerView.ViewHolder {
-    ODObject data;
+    Provider data;
     Context context;
     @BindView(R.id.item_title)
     TextView itemTitle;
@@ -29,17 +32,25 @@ class ImageViewHolder extends RecyclerView.ViewHolder {
     TextView itemDescription;
     @BindView(R.id.item_time)
     TextView itemTime;
+    @BindView(R.id.start)
+    TextView itemStart;
     @BindView(R.id.item_content)
     LinearLayout itemContent;
 
     public ImageViewHolder(View view) {
         super(view);
         context = view.getContext();
-        ButterKnife.bind(this,view);
+        ButterKnife.bind(this, view);
     }
 
     @OnClick(R.id.item_content)
     public void onViewClicked() {
-        DetailActivity.start(context);
+        Bundle b = new Bundle();
+        b.putParcelable(DetailViewActivity.DATA, Parcels.wrap(data));
+        DetailViewActivity.start(context, b);
+    }
+
+    public void setData(Provider data) {
+        this.data = data;
     }
 }

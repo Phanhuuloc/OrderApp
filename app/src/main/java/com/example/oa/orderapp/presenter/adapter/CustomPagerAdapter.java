@@ -28,6 +28,10 @@ public class CustomPagerAdapter extends FragmentStatePagerAdapter {
         fragments.add(f);
     }
 
+    public void setFragments(List<Fragment> fragments) {
+        this.fragments = fragments;
+    }
+
     @Override
     public Fragment getItem(int position) {
         return fragments.get(position);

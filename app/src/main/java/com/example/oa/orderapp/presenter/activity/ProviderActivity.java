@@ -13,6 +13,8 @@ import com.example.oa.orderapp.R;
 import com.example.oa.orderapp.data.local.Provider;
 import com.example.oa.orderapp.presenter.ProviderPresenter;
 import com.example.oa.orderapp.presenter.adapter.CustomPagerAdapter;
+import com.example.oa.orderapp.presenter.di.HasComponent;
+import com.example.oa.orderapp.presenter.di.components.UserComponent;
 import com.example.oa.orderapp.presenter.fragment.CategoryFragment;
 import com.example.oa.orderapp.presenter.view.ListProviderView;
 
@@ -22,7 +24,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.realm.RealmList;
 
-public class ProviderActivity extends BaseActivity implements ListProviderView {
+public class ProviderActivity extends BaseActivity implements HasComponent<UserComponent> {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -30,9 +32,6 @@ public class ProviderActivity extends BaseActivity implements ListProviderView {
     ViewPager viewPager;
     @BindView(R.id.tabs)
     android.support.design.widget.TabLayout tabs;
-
-    @Inject
-    ProviderPresenter presenter;
 
     private CustomPagerAdapter pagerAdapter;
     private int countTab = 3;
@@ -54,8 +53,6 @@ public class ProviderActivity extends BaseActivity implements ListProviderView {
     }
 
     private void initializeInjector() {
-        component.inject(this);
-        presenter.setView(this);
     }
 
     private void initialize() {
@@ -65,7 +62,7 @@ public class ProviderActivity extends BaseActivity implements ListProviderView {
     }
 
     private void initData() {
-        presenter.getListProvider();
+
     }
 
     private void initViewpager() {
@@ -114,7 +111,7 @@ public class ProviderActivity extends BaseActivity implements ListProviderView {
     }
 
     @Override
-    public void renderNetData(RealmList<Provider> items) {
-
+    public UserComponent getComponent() {
+        return component;
     }
 }

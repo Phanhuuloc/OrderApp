@@ -1,11 +1,11 @@
 package com.example.oa.orderapp.presenter.di.components;
 
 
-import com.example.oa.orderapp.presenter.activity.ProviderActivity;
+import com.example.oa.orderapp.presenter.activity.DetailViewActivity;
 import com.example.oa.orderapp.presenter.di.PerActivity;
 import com.example.oa.orderapp.presenter.di.modules.ActivityModule;
 import com.example.oa.orderapp.presenter.di.modules.AppModule;
-import com.example.oa.orderapp.presenter.di.modules.NetModule;
+import com.example.oa.orderapp.presenter.fragment.CategoryFragment;
 
 import dagger.Component;
 
@@ -13,7 +13,9 @@ import dagger.Component;
 @Component(dependencies = ApplicationComponent.class,
         modules = {ActivityModule.class, AppModule.class})
 public interface UserComponent extends ActivityComponent {
-    void inject(ProviderActivity providerActivity);
+    void inject(CategoryFragment providerActivity);
+
+    void inject(DetailViewActivity detailActivity);
 //  void inject(UserListFragment userListFragment);
 //  void inject(UserDetailsFragment userDetailsFragment);
 }

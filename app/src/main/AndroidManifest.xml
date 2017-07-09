@@ -29,7 +29,7 @@
             android:name=".presenter.activity.ProviderActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".presenter.activity.DetailActivity"
+            android:name=".presenter.activity.DetailViewActivity"
             android:label="@string/title_activity_detail"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

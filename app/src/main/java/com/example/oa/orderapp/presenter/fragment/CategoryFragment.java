@@ -9,18 +9,29 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.oa.orderapp.R;
+import com.example.oa.orderapp.data.local.Provider;
+import com.example.oa.orderapp.presenter.ProviderPresenter;
 import com.example.oa.orderapp.presenter.adapter.ProviderItemAdapter;
+import com.example.oa.orderapp.presenter.di.components.UserComponent;
+import com.example.oa.orderapp.presenter.view.ListProviderView;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import io.realm.RealmList;
 
-public class CategoryFragment extends BaseFragment {
+public class CategoryFragment extends BaseFragment implements ListProviderView{
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
 
     Unbinder unbinder;
+
+    @Inject
+    ProviderPresenter presenter;
+    private ProviderItemAdapter adapter;
 
     public CategoryFragment() {
 
@@ -30,6 +41,8 @@ public class CategoryFragment extends BaseFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.getComponent(UserComponent.class).inject(this);
+        presenter.setView(this);
     }
 
     @Override
@@ -44,6 +57,11 @@ public class CategoryFragment extends BaseFragment {
 
     private void initialize() {
         initializeRecyclerView();
+        initData();
+    }
+
+    private void initData() {
+        presenter.getListProvider();
     }
 
     private void initializeRecyclerView() {
@@ -54,7 +72,7 @@ public class CategoryFragment extends BaseFragment {
         // use a linear layout manager
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(mLayoutManager);
-        ProviderItemAdapter adapter = new ProviderItemAdapter(getActivity());
+        adapter = new ProviderItemAdapter(getActivity());
         recyclerView.setAdapter(adapter);
     }
 
@@ -62,5 +80,10 @@ public class CategoryFragment extends BaseFragment {
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    @Override
+    public void renderNetData(RealmList<Provider> items) {
+        adapter.setItems(items);
     }
 }

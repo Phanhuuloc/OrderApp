@@ -14,7 +14,7 @@ import io.realm.RealmList;
  * Created by Phoenix on 6/27/17.
  */
 
-public class ProviderPresenter implements Presenter{
+public class ProviderPresenter implements Presenter {
     private final GetProviderListUC getProviderListUC;
     private ListProviderView view;
 

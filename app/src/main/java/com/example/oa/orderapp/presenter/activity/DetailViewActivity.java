@@ -10,13 +10,22 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.oa.orderapp.R;
+import com.example.oa.orderapp.data.local.Provider;
+import com.example.oa.orderapp.presenter.ProviderDetailsPresenter;
+import com.example.oa.orderapp.presenter.view.ProviderDetailView;
+
+import org.parceler.Parcel;
+import org.parceler.Parcels;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class DetailActivity extends BaseActivity {
+public class DetailViewActivity extends BaseActivity implements ProviderDetailView {
 
+    public static final String DATA = "provider_data";
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.textView)
@@ -28,8 +37,13 @@ public class DetailActivity extends BaseActivity {
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
 
-    public static void start(Context context) {
-        Intent i = new Intent(context, DetailActivity.class);
+    @Inject
+    ProviderDetailsPresenter presenter;
+    Provider provider;
+
+    public static void start(Context context, Bundle b) {
+        Intent i = new Intent(context, DetailViewActivity.class);
+        i.putExtras(b);
         context.startActivity(i);
     }
 
@@ -42,6 +56,30 @@ public class DetailActivity extends BaseActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        initialize();
+
+    }
+
+    private void initialize() {
+        initData();
+        initializeComponent();
+        initializeInjector();
+    }
+
+    private void initData() {
+        Bundle bundle = getIntent().getExtras();
+        if (null != bundle) {
+            provider = Parcels.unwrap(bundle.getParcelable(DATA));
+        }
+
+        if (provider != null)
+            renderNetData(provider);
+    }
+
+    private void initializeInjector() {
+        component.inject(this);
+        presenter.setView(this);
+        presenter.getProviderDetail(provider.getUuid());
     }
 
 
@@ -54,5 +92,10 @@ public class DetailActivity extends BaseActivity {
                 OrderActivity.start(this);
                 break;
         }
+    }
+
+    @Override
+    public void renderNetData(Provider item) {
+        textView.setText(item.getName());
     }
 }

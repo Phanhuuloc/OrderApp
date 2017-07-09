@@ -5,20 +5,21 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.oa.orderapp.R;
-import com.example.oa.orderapp.data.ODObject;
+import com.example.oa.orderapp.data.local.Provider;
 
-import java.util.ArrayList;
-import java.util.List;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import io.realm.RealmList;
 
 /**
  * Created by Phoenix on 5/29/17.
  */
 
-public class ProviderItemAdapter extends RecyclerView.Adapter {
-
-    private List<ODObject> items = new ArrayList<>();
+public class ProviderItemAdapter extends BaseRecyclerAdapter {
 
     private static final int TYPE_ITEM = 0;
     private final Activity mActivity;
@@ -48,8 +49,15 @@ public class ProviderItemAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        Provider provider = (Provider) items.get(position);
         if (holder instanceof ImageViewHolder) {
             ImageViewHolder viewHolder = (ImageViewHolder) holder;
+            viewHolder.setData(provider);
+            viewHolder.itemTitle.setText(provider.getName());
+            viewHolder.itemDescription.setText(provider.getDescription());
+            viewHolder.itemAddress.setText(provider.getAddress());
+            viewHolder.itemTime.setText(provider.getOpenHour());
+            viewHolder.itemStart.setText(provider.getStar());
 //            viewHolder.data = items.get(position);
         } else {
 
@@ -58,7 +66,12 @@ public class ProviderItemAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return 2;
+        return items.size();
+    }
+
+    public void setItems(RealmList<Provider> items) {
+        this.items = items;
+        notifyDataSetChanged();
     }
 
 }
