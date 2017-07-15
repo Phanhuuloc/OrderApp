@@ -1,5 +1,6 @@
 package com.example.oa.orderapp.data.remote;
 
+import com.example.oa.orderapp.data.cache.ListCategoryCache;
 import com.example.oa.orderapp.data.cache.ListMenuCache;
 import com.example.oa.orderapp.data.cache.ListProviderCache;
 import com.example.oa.orderapp.data.local.Provider;
@@ -16,9 +17,12 @@ public interface RetrofitServices {
     @GET("provider/list")
     Observable<ListProviderCache> getListProvider();
 
-    @GET("menu/provider/{name}")
+    @GET("provider/menu/{name}")
     Observable<ListMenuCache> getListMenu(@Path("name") String name);
 
     @GET("provider/{name}")
     Observable<Provider> getProvider(@Path("name") String uid);
+
+    @GET("category/menu/{name}")
+    Observable<ListCategoryCache> getListCategory(@Path("name") String uid);
 }

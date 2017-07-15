@@ -14,7 +14,6 @@ import com.example.oa.orderapp.data.local.Provider;
 import com.example.oa.orderapp.presenter.ProviderDetailsPresenter;
 import com.example.oa.orderapp.presenter.view.ProviderDetailView;
 
-import org.parceler.Parcel;
 import org.parceler.Parcels;
 
 import javax.inject.Inject;
@@ -23,7 +22,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class DetailViewActivity extends BaseActivity implements ProviderDetailView {
+public class ProviderDetailActivity extends BaseActivity implements ProviderDetailView {
 
     public static final String DATA = "provider_data";
     @BindView(R.id.toolbar)
@@ -42,7 +41,7 @@ public class DetailViewActivity extends BaseActivity implements ProviderDetailVi
     Provider provider;
 
     public static void start(Context context, Bundle b) {
-        Intent i = new Intent(context, DetailViewActivity.class);
+        Intent i = new Intent(context, ProviderDetailActivity.class);
         i.putExtras(b);
         context.startActivity(i);
     }
@@ -89,7 +88,7 @@ public class DetailViewActivity extends BaseActivity implements ProviderDetailVi
             case R.id.btn_navigate:
                 break;
             case R.id.btn_pre_order:
-                OrderActivity.start(this);
+                MenuActivity.start(this);
                 break;
         }
     }

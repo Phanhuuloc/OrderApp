@@ -35,4 +35,8 @@
     <string name="auth_code_fmt">Auth Code: %s</string>
     <string name="id_token_fmt">ID Token: %s</string>
     <string name="title_activity_oder">OderActivity</string>
+    <string name="add_item_title">Mô tả sản phẩm</string>
+    <string name="title_category">Category</string>
+    <string name="title_name">Name</string>
+    <string name="title_price">Price</string>
 </resources>

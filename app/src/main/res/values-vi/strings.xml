@@ -3,4 +3,8 @@
     <string name="app_name">Đặt món mobile</string>
     <string name="wc_search_txt" translatable="false">Bạn định đi đâu</string>
     <string name="app_menu_title">Menu</string>
+    <string name="add_item_title">Mô tả sản phẩm</string>
+    <string name="title_category">Category</string>
+    <string name="title_name">Name</string>
+    <string name="title_price">Price</string>
 </resources>

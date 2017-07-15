@@ -48,11 +48,7 @@ public class ProviderActivity extends BaseActivity implements HasComponent<UserC
         ButterKnife.bind(this);
 
         initializeComponent();
-        initializeInjector();
         initialize();
-    }
-
-    private void initializeInjector() {
     }
 
     private void initialize() {

@@ -1,5 +1,6 @@
 package com.example.oa.orderapp.data.remote;
 
+import com.example.oa.orderapp.data.cache.ListCategoryCache;
 import com.example.oa.orderapp.data.cache.ListMenuCache;
 import com.example.oa.orderapp.data.cache.ListProviderCache;
 import com.example.oa.orderapp.data.local.Provider;
@@ -19,4 +20,6 @@ public interface RestApi {
     Observable<ListMenuCache> getListMenu(String name);
 
     Observable<Provider> getProvider(String uid);
+
+    Observable<ListCategoryCache> getListCategory(String uid);
 }

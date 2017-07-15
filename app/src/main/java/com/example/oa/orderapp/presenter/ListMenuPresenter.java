@@ -1,12 +1,10 @@
 package com.example.oa.orderapp.presenter;
 
 import com.example.oa.orderapp.data.cache.ListMenuCache;
-import com.example.oa.orderapp.data.cache.ListProviderCache;
 import com.example.oa.orderapp.data.local.Menu;
 import com.example.oa.orderapp.domain.interactor.DefaultObserver;
-import com.example.oa.orderapp.domain.interactor.GetMenuListUC;
+import com.example.oa.orderapp.domain.interactor.GetListMenuUC;
 import com.example.oa.orderapp.presenter.view.ListMenuView;
-import com.example.oa.orderapp.presenter.view.ListProviderView;
 
 import javax.inject.Inject;
 
@@ -17,12 +15,12 @@ import io.realm.RealmList;
  */
 
 public class ListMenuPresenter implements Presenter {
-    private final GetMenuListUC getMenuListUC;
+    private final GetListMenuUC getListMenuUC;
     private ListMenuView view;
 
     @Inject
-    public ListMenuPresenter(GetMenuListUC getMenuListUC) {
-        this.getMenuListUC = getMenuListUC;
+    public ListMenuPresenter(GetListMenuUC getListMenuUC) {
+        this.getListMenuUC = getListMenuUC;
     }
 
     public void setView(ListMenuView view) {
@@ -44,8 +42,8 @@ public class ListMenuPresenter implements Presenter {
 
     }
 
-    public void getListProvider(String name) {
-        getMenuListUC.execute(new ListMenuObserver(),new GetMenuListUC.Param(name));
+    public void getListMenu(String id) {
+        getListMenuUC.execute(new ListMenuObserver(),new GetListMenuUC.Param(id));
     }
 
     private class ListMenuObserver extends DefaultObserver<ListMenuCache> {

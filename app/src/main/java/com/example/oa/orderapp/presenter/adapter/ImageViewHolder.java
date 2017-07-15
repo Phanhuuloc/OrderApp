@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.example.oa.orderapp.R;
 import com.example.oa.orderapp.data.local.Provider;
-import com.example.oa.orderapp.presenter.activity.DetailViewActivity;
+import com.example.oa.orderapp.presenter.activity.ProviderDetailActivity;
 
 import org.parceler.Parcels;
 
@@ -46,8 +46,8 @@ class ImageViewHolder extends RecyclerView.ViewHolder {
     @OnClick(R.id.item_content)
     public void onViewClicked() {
         Bundle b = new Bundle();
-        b.putParcelable(DetailViewActivity.DATA, Parcels.wrap(data));
-        DetailViewActivity.start(context, b);
+        b.putParcelable(ProviderDetailActivity.DATA, Parcels.wrap(data));
+        ProviderDetailActivity.start(context, b);
     }
 
     public void setData(Provider data) {

@@ -17,7 +17,6 @@ import io.realm.annotations.Ignore;
         value = Parcel.Serialization.BEAN,
         analyze = {Provider.class})
 public class Provider extends RealmObject implements ODObject {
-//    @Ignore
     private String uuid;
     private String name;
     private String image;
@@ -26,6 +25,9 @@ public class Provider extends RealmObject implements ODObject {
     private String url;
     private String openHour;
     private String star;
+
+    public Provider() {
+    }
 
     public String getUuid() {
         return uuid;

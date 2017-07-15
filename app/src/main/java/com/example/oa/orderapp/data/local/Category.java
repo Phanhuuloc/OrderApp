@@ -6,28 +6,27 @@ import org.parceler.Parcel;
 
 import java.util.UUID;
 
-import io.realm.MenuRealmProxy;
+import io.realm.CategoryRealmProxy;
 import io.realm.RealmObject;
 import io.realm.annotations.Ignore;
 
 /**
- * Created by Phoenix on 6/14/17.
+ * Created by Phoenix on 7/10/17.
  */
-@Parcel(implementations = {MenuRealmProxy.class},
+@Parcel(implementations = {CategoryRealmProxy.class},
         value = Parcel.Serialization.BEAN,
-        analyze = {Menu.class})
-public class Menu extends RealmObject implements ODObject {
-    @Ignore
+        analyze = {Category.class})
+public class Category extends RealmObject implements ODObject{
     private String uuid;
     private String name;
     private int price;
     private String description;
     private String note;
 
-    public Menu() {
+    public Category() {
     }
 
-    public Menu(String name) {
+    public Category(String name) {
         this.name = name;
     }
 

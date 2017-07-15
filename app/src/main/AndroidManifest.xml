@@ -29,7 +29,7 @@
             android:name=".presenter.activity.ProviderActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".presenter.activity.DetailViewActivity"
+            android:name=".presenter.activity.ProviderDetailActivity"
             android:label="@string/title_activity_detail"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -46,6 +46,17 @@
             android:name=".presenter.activity.OrderActivity"
             android:label="@string/title_activity_oder"
             android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+        <activity
+            android:name=".presenter.activity.MenuActivity"
+            android:exported="true"
+            android:label="@string/title_activity_oder"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+        <activity android:name=".presenter.activity.AddNewActivity"
+            android:exported="true">
 
         </activity>
     </application>

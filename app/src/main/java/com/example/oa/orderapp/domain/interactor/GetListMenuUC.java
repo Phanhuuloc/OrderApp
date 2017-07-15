@@ -5,6 +5,8 @@ import com.example.oa.orderapp.data.remote.RestApi;
 import com.example.oa.orderapp.domain.executor.PostExecutionThread;
 import com.example.oa.orderapp.domain.executor.ThreadExecutor;
 
+import javax.inject.Inject;
+
 import dagger.internal.Preconditions;
 import io.reactivex.Observable;
 
@@ -12,10 +14,11 @@ import io.reactivex.Observable;
  * Created by Phoenix on 6/28/17.
  */
 
-public class GetMenuListUC extends UseCase<ListMenuCache, GetMenuListUC.Param> {
+public class GetListMenuUC extends UseCase<ListMenuCache, GetListMenuUC.Param> {
     private final RestApi restApi;
 
-    GetMenuListUC(ThreadExecutor threadExecutor, PostExecutionThread postExecutionThread, RestApi restApi) {
+    @Inject
+    GetListMenuUC(ThreadExecutor threadExecutor, PostExecutionThread postExecutionThread, RestApi restApi) {
         super(threadExecutor, postExecutionThread);
         this.restApi = restApi;
     }
