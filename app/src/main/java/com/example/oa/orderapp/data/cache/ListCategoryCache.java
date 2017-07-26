@@ -1,15 +1,12 @@
 package com.example.oa.orderapp.data.cache;
 
 import com.example.oa.orderapp.data.local.Category;
-import com.example.oa.orderapp.data.local.Menu;
 import com.example.oa.orderapp.data.local.RealmListParcelConverter;
-import com.example.oa.orderapp.presenter.MenuCategoryPresenter;
 
 import org.parceler.Parcel;
 import org.parceler.ParcelPropertyConverter;
 
 import io.realm.ListCategoryCacheRealmProxy;
-import io.realm.ListMenuCacheRealmProxy;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 

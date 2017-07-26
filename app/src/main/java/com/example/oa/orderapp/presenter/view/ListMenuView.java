@@ -1,7 +1,6 @@
 package com.example.oa.orderapp.presenter.view;
 
-import com.example.oa.orderapp.data.local.Menu;
-import com.example.oa.orderapp.data.local.Provider;
+import com.example.oa.orderapp.data.local.Value;
 
 import io.realm.RealmList;
 
@@ -10,5 +9,5 @@ import io.realm.RealmList;
  */
 
 public interface ListMenuView {
-    void renderNetData(RealmList<Menu> items);
+    void renderNetData(RealmList<Value> items);
 }

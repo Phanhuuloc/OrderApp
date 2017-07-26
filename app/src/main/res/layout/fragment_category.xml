@@ -6,6 +6,7 @@
     tools:context="com.example.oa.orderapp.presenter.fragment.CategoryFragment">
 
     <android.support.v7.widget.RecyclerView
+        android:layout_marginLeft="50dp"
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

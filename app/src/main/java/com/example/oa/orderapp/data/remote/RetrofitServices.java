@@ -17,12 +17,12 @@ public interface RetrofitServices {
     @GET("provider/list")
     Observable<ListProviderCache> getListProvider();
 
-    @GET("provider/menu/{name}")
-    Observable<ListMenuCache> getListMenu(@Path("name") String name);
+    @GET("provider/{id}/menu")
+    Observable<ListMenuCache> getListMenu(@Path("id") String name);
 
     @GET("provider/{name}")
     Observable<Provider> getProvider(@Path("name") String uid);
 
-    @GET("category/menu/{name}")
-    Observable<ListCategoryCache> getListCategory(@Path("name") String uid);
+    @GET("provider/{id}/category")
+    Observable<ListCategoryCache> getListCategory(@Path("id") String uid);
 }

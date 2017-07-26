@@ -4,19 +4,17 @@ import com.example.oa.orderapp.data.ODObject;
 
 import org.parceler.Parcel;
 
-import java.util.UUID;
-
-import io.realm.MenuRealmProxy;
+import io.realm.ValueRealmProxy;
 import io.realm.RealmObject;
 import io.realm.annotations.Ignore;
 
 /**
  * Created by Phoenix on 6/14/17.
  */
-@Parcel(implementations = {MenuRealmProxy.class},
+@Parcel(implementations = {ValueRealmProxy.class},
         value = Parcel.Serialization.BEAN,
-        analyze = {Menu.class})
-public class Menu extends RealmObject implements ODObject {
+        analyze = {Value.class})
+public class Value extends RealmObject implements ODObject {
     @Ignore
     private String uuid;
     private String name;
@@ -24,10 +22,10 @@ public class Menu extends RealmObject implements ODObject {
     private String description;
     private String note;
 
-    public Menu() {
+    public Value() {
     }
 
-    public Menu(String name) {
+    public Value(String name) {
         this.name = name;
     }
 

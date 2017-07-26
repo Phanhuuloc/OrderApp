@@ -1,7 +1,7 @@
 package com.example.oa.orderapp.presenter;
 
 import com.example.oa.orderapp.data.cache.ListMenuCache;
-import com.example.oa.orderapp.data.local.Menu;
+import com.example.oa.orderapp.data.local.Value;
 import com.example.oa.orderapp.domain.interactor.DefaultObserver;
 import com.example.oa.orderapp.domain.interactor.GetListMenuUC;
 import com.example.oa.orderapp.presenter.view.ListMenuView;
@@ -63,7 +63,7 @@ public class ListMenuPresenter implements Presenter {
         }
     }
 
-    private void showMenuList(RealmList<Menu> items) {
+    private void showMenuList(RealmList<Value> items) {
         view.renderNetData(items);
     }
 }

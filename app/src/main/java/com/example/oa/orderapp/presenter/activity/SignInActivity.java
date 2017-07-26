@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.oa.orderapp.R;
+import com.example.oa.orderapp.common.Utils;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -30,6 +31,7 @@ import butterknife.OnClick;
 public class SignInActivity extends BaseActivity implements GoogleApiClient.OnConnectionFailedListener {
     private static final String TAG = "SignInActivity";
     private static final int RC_SIGN_IN = 9001;
+    public static final String PREF_USER_FIRST_TIME = "PREF_USER_FIRST_TIME";
     @BindView(R.id.google_icon)
     ImageView googleIcon;
     @BindView(R.id.title_text)
@@ -52,11 +54,22 @@ public class SignInActivity extends BaseActivity implements GoogleApiClient.OnCo
     LinearLayout mainLayout;
     private GoogleApiClient mGoogleApiClient;
     private ProgressDialog mProgressDialog;
+    private boolean isUserFirstTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
+
+
+        isUserFirstTime = Boolean.valueOf(Utils.readSharedSetting(SignInActivity.this, PREF_USER_FIRST_TIME, "true"));
+
+        Intent introIntent = new Intent(SignInActivity.this, IntroActivity.class);
+        introIntent.putExtra(PREF_USER_FIRST_TIME, isUserFirstTime);
+
+        if (isUserFirstTime)
+            startActivity(introIntent);
+
         ButterKnife.bind(this);
         initialize();
     }

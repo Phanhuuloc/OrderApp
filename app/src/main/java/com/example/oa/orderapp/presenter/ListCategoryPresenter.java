@@ -3,7 +3,7 @@ package com.example.oa.orderapp.presenter;
 import com.example.oa.orderapp.data.cache.ListCategoryCache;
 import com.example.oa.orderapp.data.local.Category;
 import com.example.oa.orderapp.domain.interactor.DefaultObserver;
-import com.example.oa.orderapp.domain.interactor.GetMenuCategoryListUC;
+import com.example.oa.orderapp.domain.interactor.GetListCategoryListUC;
 import com.example.oa.orderapp.presenter.view.ListCategoryView;
 
 import javax.inject.Inject;
@@ -14,13 +14,13 @@ import io.realm.RealmList;
  * Created by Phoenix on 7/10/17.
  */
 
-public class MenuCategoryPresenter implements Presenter{
-    private final GetMenuCategoryListUC getMenuCategoryListUC;
+public class ListCategoryPresenter implements Presenter{
+    private final GetListCategoryListUC getListCategoryListUC;
     private ListCategoryView view;
 
     @Inject
-    public MenuCategoryPresenter(GetMenuCategoryListUC getMenuCategoryListUC) {
-        this.getMenuCategoryListUC = getMenuCategoryListUC;
+    public ListCategoryPresenter(GetListCategoryListUC getListCategoryListUC) {
+        this.getListCategoryListUC = getListCategoryListUC;
     }
 
     public void setView(ListCategoryView view) {
@@ -43,13 +43,13 @@ public class MenuCategoryPresenter implements Presenter{
     }
 
     public void getListCategory(String uid) {
-        getMenuCategoryListUC.execute(new ListCategoryObserver(),new GetMenuCategoryListUC.Param(uid));
+        getListCategoryListUC.execute(new ListCategoryObserver(),new GetListCategoryListUC.Param(uid));
     }
 
     private class ListCategoryObserver extends DefaultObserver<ListCategoryCache> {
         @Override
         public void onNext(ListCategoryCache listCategoryCache) {
-            MenuCategoryPresenter.this.showListCategory(listCategoryCache.getItems());
+            ListCategoryPresenter.this.showListCategory(listCategoryCache.getItems());
         }
 
         @Override

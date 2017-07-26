@@ -72,7 +72,7 @@ public class OAApplication extends Application implements AppConstants {
     private void initializeInjector() {
         this.applicationComponent = DaggerApplicationComponent.builder()
                 .applicationModule(new ApplicationModule(this))
-                .netModule(new NetModule("http://192.168.1.11:8040/"))
+                .netModule(new NetModule("http://192.168.1.10:8040/"))
                 .build();
     }
 

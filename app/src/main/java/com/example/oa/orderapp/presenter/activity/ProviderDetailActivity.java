@@ -88,7 +88,8 @@ public class ProviderDetailActivity extends BaseActivity implements ProviderDeta
             case R.id.btn_navigate:
                 break;
             case R.id.btn_pre_order:
-                MenuActivity.start(this);
+                String id = provider.getUuid();
+                MenuActivity.start(this, id);
                 break;
         }
     }

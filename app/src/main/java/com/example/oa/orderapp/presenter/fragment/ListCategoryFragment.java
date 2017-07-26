@@ -6,12 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.oa.orderapp.data.local.Category;
-import com.example.oa.orderapp.presenter.MenuCategoryPresenter;
+import com.example.oa.orderapp.presenter.ListCategoryPresenter;
+import com.example.oa.orderapp.presenter.activity.ProviderActivity;
 import com.example.oa.orderapp.presenter.adapter.CustomAdapter;
 import com.example.oa.orderapp.presenter.di.components.UserComponent;
 import com.example.oa.orderapp.presenter.view.ListCategoryView;
-
-import java.util.ArrayList;
 
 import javax.inject.Inject;
 
@@ -23,22 +22,22 @@ import io.realm.RealmList;
 
 public class ListCategoryFragment extends RecyclerViewFragment implements ListCategoryView {
     @Inject
-    MenuCategoryPresenter presenter;
+    ListCategoryPresenter presenter;
+    private String providerId;
 
     public ListCategoryFragment() {
         mCurrentLayoutManagerType = TYPE_HORIZONTAL_LIST;
     }
-//    @Override
-//    public void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//
-//        // Initialize dataset, this data would usually come from a local content provider or
-//        // remote server.
-//        mCurrentLayoutManagerType = getArguments().getInt(KEY_LAYOUT_MANAGER);
-//
-//        this.getComponent(UserComponent.class).inject(this);
-//        presenter.setView(this);
-//    }
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // Initialize dataset, this data would usually come from a local content provider or
+        // remote server.
+        providerId = getArguments().getString(ProviderActivity.ID);
+
+        this.getComponent(UserComponent.class).inject(this);
+        presenter.setView(this);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -50,8 +49,7 @@ public class ListCategoryFragment extends RecyclerViewFragment implements ListCa
         mAdapter.setType(CustomAdapter.TYPE_LIST_CATEGORY);
 //        mAdapter = new CustomAdapter<Category>();
 //        mRecyclerView.setAdapter(mAdapter);
-//        String id = "18f7b229-692b-4c53-b8e7-812149b82c40";
-//        presenter.getListCategory(id);
+        presenter.getListCategory(providerId);
         initDummyData();
     }
 

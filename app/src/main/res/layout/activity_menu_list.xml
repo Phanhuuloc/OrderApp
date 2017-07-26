@@ -1,71 +1,68 @@
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/sample_main_layout">
+    android:orientation="vertical">
 
-    <!--<ViewAnimator-->
-    <!--android:id="@+id/sample_output"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="0px"-->
-    <!--android:layout_weight="1">-->
-
-    <!--<ScrollView-->
-    <!--style="@style/Widget.SampleMessageTile"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent">-->
-
-    <!--<TextView-->
-    <!--style="@style/Widget.SampleMessage"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:paddingLeft="@dimen/horizontal_page_margin"-->
-    <!--android:paddingRight="@dimen/horizontal_page_margin"-->
-    <!--android:paddingTop="@dimen/vertical_page_margin"-->
-    <!--android:paddingBottom="@dimen/vertical_page_margin"-->
-    <!--android:text="@string/intro_message" />-->
-    <!--</ScrollView>-->
-
-    <!--<fragment-->
-    <!--android:name="com.example.android.common.logger.LogFragment"-->
-    <!--android:id="@+id/log_fragment"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent" />-->
-
-    <!--</ViewAnimator>-->
-
-    <View
-        android:id="@+id/view_top"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@android:color/darker_gray" />
+        android:layout_height="?attr/actionBarSize"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
-    <LinearLayout
-        android:id="@+id/vlist"
-        android:layout_below="@+id/view_top"
-        android:layout_above="@+id/hlist"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <FrameLayout
-            android:id="@+id/list_item_fragment"
-            android:layout_weight="2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/hlist"
-        android:layout_width="wrap_content"
-        android:orientation="horizontal"
-        android:layout_height="40dp"
-        android:layout_alignParentBottom="true">
-        <FrameLayout
-            android:id="@+id/list_category_fragment"
-            android:layout_weight="2"
+        <TextView
+            android:id="@+id/toolbar_title"
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Toolbar Title"
+            android:textColor="@android:color/white" />
+    </android.support.v7.widget.Toolbar>
 
-</RelativeLayout>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/sample_main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/view_top"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
+
+        <LinearLayout
+            android:id="@+id/vlist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/hlist"
+            android:layout_below="@+id/view_top">
+
+            <FrameLayout
+                android:id="@+id/list_item_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/hlist"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:id="@+id/list_category_fragment"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="2" />
+        </LinearLayout>
+
+    </RelativeLayout>
+</LinearLayout>
+
+
+

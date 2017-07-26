@@ -14,17 +14,17 @@ import io.reactivex.Observable;
  * Created by Phoenix on 7/10/17.
  */
 
-public class GetMenuCategoryListUC extends UseCase<ListCategoryCache, GetMenuCategoryListUC.Param> {
+public class GetListCategoryListUC extends UseCase<ListCategoryCache, GetListCategoryListUC.Param> {
     private  final RestApi restApi;
 
     @Inject
-    GetMenuCategoryListUC(ThreadExecutor threadExecutor, PostExecutionThread postExecutionThread, RestApi restApi) {
+    GetListCategoryListUC(ThreadExecutor threadExecutor, PostExecutionThread postExecutionThread, RestApi restApi) {
         super(threadExecutor, postExecutionThread);
         this.restApi = restApi;
     }
 
     @Override
-    Observable<ListCategoryCache> buildUseCaseObservable(GetMenuCategoryListUC.Param param) {
+    Observable<ListCategoryCache> buildUseCaseObservable(GetListCategoryListUC.Param param) {
         Preconditions.checkNotNull(param);
         return restApi.getListCategory(param.uid);
 

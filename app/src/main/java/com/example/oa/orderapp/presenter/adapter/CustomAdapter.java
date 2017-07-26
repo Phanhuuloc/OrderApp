@@ -28,7 +28,7 @@ import android.widget.TextView;
 
 import com.example.oa.orderapp.R;
 import com.example.oa.orderapp.data.local.Category;
-import com.example.oa.orderapp.data.local.Menu;
+import com.example.oa.orderapp.data.local.Value;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -81,9 +81,9 @@ public class CustomAdapter<T extends RealmObject> extends RecyclerView.Adapter {
 
         if (holder instanceof CustomAdapter.ItemViewHolder) {
             ItemViewHolder viewHolder = (ItemViewHolder) holder;
-            Menu data = (Menu) items.get(position);
+            Value data = (Value) items.get(position);
             viewHolder.itemName.setText(data.getName());
-//            viewHolder.itemPrice.setText(data.getPrice());
+            viewHolder.itemPrice.setText(""+data.getPrice());
         } else if (TYPE_LIST_CATEGORY == type) {
             CategoryViewHolder viewHolder = (CategoryViewHolder) holder;
             Category data = (Category) items.get(position);
