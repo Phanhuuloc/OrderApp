@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="50dp"
-    android:layout_margin="10dp"
-    android:orientation="horizontal">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="10dp">
 
     <ImageView
         android:id="@+id/item_img"
@@ -13,6 +13,8 @@
         android:layout_height="50dp" />
 
     <LinearLayout
+        android:layout_toRightOf="@+id/item_img"
+        android:layout_toLeftOf="@+id/layout_order"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -20,10 +22,10 @@
 
         <TextView
             android:id="@+id/item_name"
-            android:layout_width="200dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:text="aaddddddddddd"
+            android:text="ghffffffffffffffffffffffffffffffffffh"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -36,11 +38,21 @@
     </LinearLayout>
 
 
-    <ImageButton
+    <LinearLayout
+        android:id="@+id/layout_order"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_alignParentRight="true"
-        android:background="@drawable/item" />
+        android:gravity="center_vertical"
+        android:layout_alignParentEnd="true">
+        <com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker
+            android:layout_gravity="center_vertical"
+            android:id="@+id/number_picker_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:snp_scrollEnabled="true"
+            app:snp_updateInterval="25"/>
+    </LinearLayout>
 
 
-</LinearLayout>
+
+</RelativeLayout>

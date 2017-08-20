@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.RadioButton;
 
 import com.example.oa.orderapp.R;
+import com.example.oa.orderapp.data.local.Value;
 import com.example.oa.orderapp.presenter.adapter.CustomAdapter;
 
 import java.util.List;
@@ -41,6 +42,12 @@ public abstract class RecyclerViewFragment<T extends RealmObject> extends BaseFr
     protected RecyclerView.LayoutManager mLayoutManager;
     protected RealmList<T> mDataset;
 
+    public  Callback<T> callback;
+
+    public interface Callback<T> {
+        void onMenuItemClick(T item, boolean b);
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +57,10 @@ public abstract class RecyclerViewFragment<T extends RealmObject> extends BaseFr
         Bundle b = getArguments();
         if (b != null)
             mCurrentLayoutManagerType = getArguments().getInt(KEY_LAYOUT_MANAGER);
+    }
+
+    public void setCallback(Callback<T> callback) {
+        this.callback = callback;
     }
 
     @Override
@@ -96,17 +107,17 @@ public abstract class RecyclerViewFragment<T extends RealmObject> extends BaseFr
         switch (layoutManagerType) {
             case TYPE_GRID:
                 mLayoutManager = new GridLayoutManager(getActivity(), SPAN_COUNT);
-                mAdapter.setType(TYPE_GRID);
+//                mAdapter.setType(TYPE_GRID);
                 mCurrentLayoutManagerType = TYPE_GRID;
                 break;
             case TYPE_STAGGERD_GRID:
                 mLayoutManager = new GridLayoutManager(getActivity(), SPAN_COUNT);
-                mAdapter.setType(TYPE_STAGGERD_GRID);
+//                mAdapter.setType(TYPE_STAGGERD_GRID);
                 mCurrentLayoutManagerType = TYPE_STAGGERD_GRID;
                 break;
             case TYPE_VERTICAL_LIST:
                 mLayoutManager = new LinearLayoutManager(getActivity());
-                mAdapter.setType(TYPE_VERTICAL_LIST);
+//                mAdapter.setType(TYPE_VERTICAL_LIST);
                 mCurrentLayoutManagerType = TYPE_VERTICAL_LIST;
                 break;
             case TYPE_HORIZONTAL_LIST:

@@ -42,4 +42,9 @@
     <string name="title_name">Name</string>
     <string name="title_price">Price</string>
     <string name="section_format">Page %1$d</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="order">Order</string>
+    <string name="un_order">Un Order</string>
+    <string name="add">+</string>
+    <string name="accept">Thanh toan</string>
 </resources>

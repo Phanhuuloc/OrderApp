@@ -23,18 +23,22 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.oa.orderapp.R;
 import com.example.oa.orderapp.data.local.Category;
 import com.example.oa.orderapp.data.local.Value;
+import com.example.oa.orderapp.presenter.fragment.RecyclerViewFragment;
+import com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import io.realm.RealmObject;
 
 /**
@@ -44,9 +48,11 @@ public class CustomAdapter<T extends RealmObject> extends RecyclerView.Adapter {
     private static final String TAG = "CustomAdapter";
     public static final int TYPE_LIST_MON = 0;
     public static final int TYPE_LIST_CATEGORY = 1;
+    public static final int TYPE_LIST_PURCHASE = 3;
 
     private List<T> items = new ArrayList<>();
     private int type;
+    private RecyclerViewFragment.Callback<Value> callback;
 
     public void setType(int type) {
         this.type = type;
@@ -69,7 +75,10 @@ public class CustomAdapter<T extends RealmObject> extends RecyclerView.Adapter {
         } else if (TYPE_LIST_CATEGORY == type) {
             View v = inflater.inflate(R.layout.category_item, viewGroup, false);
             return new CategoryViewHolder(v);
-        }else {
+        } else if (TYPE_LIST_PURCHASE == type) {
+            View v = inflater.inflate(R.layout.bill_mon_item, viewGroup, false);
+            return new BillItemViewHolder(v);
+        } else {
             return null;
         }
     }
@@ -83,11 +92,26 @@ public class CustomAdapter<T extends RealmObject> extends RecyclerView.Adapter {
             ItemViewHolder viewHolder = (ItemViewHolder) holder;
             Value data = (Value) items.get(position);
             viewHolder.itemName.setText(data.getName());
-            viewHolder.itemPrice.setText(""+data.getPrice());
+            viewHolder.itemPrice.setText("" + data.getPrice());
+            viewHolder.itemOrder.setOnClickListener(v -> {
+                viewHolder.itemOrder.setVisibility(View.GONE);
+                viewHolder.itemUnOrder.setVisibility(View.VISIBLE);
+                callback.onMenuItemClick(data, false);
+            });
+            viewHolder.itemUnOrder.setOnClickListener(v -> {
+                viewHolder.itemUnOrder.setVisibility(View.GONE);
+                viewHolder.itemOrder.setVisibility(View.VISIBLE);
+                callback.onMenuItemClick(data, true);
+            });
         } else if (TYPE_LIST_CATEGORY == type) {
             CategoryViewHolder viewHolder = (CategoryViewHolder) holder;
             Category data = (Category) items.get(position);
             viewHolder.itemName.setText(data.getName());
+        } else if (TYPE_LIST_PURCHASE == type) {
+            BillItemViewHolder viewHolder = (BillItemViewHolder) holder;
+            Value data = (Value) items.get(position);
+            viewHolder.itemName.setText(data.getName());
+            viewHolder.picker.setMinValue(1);
         }
 
     }
@@ -96,6 +120,10 @@ public class CustomAdapter<T extends RealmObject> extends RecyclerView.Adapter {
     @Override
     public int getItemCount() {
         return items.size();
+    }
+
+    public void setCallback(RecyclerViewFragment.Callback<Value> callback) {
+        this.callback = callback;
     }
 
     /**
@@ -108,6 +136,11 @@ public class CustomAdapter<T extends RealmObject> extends RecyclerView.Adapter {
         TextView itemName;
         @BindView(R.id.item_price)
         TextView itemPrice;
+        @BindView(R.id.item_order)
+        Button itemOrder;
+        @BindView(R.id.item_un_order)
+        Button itemUnOrder;
+
 
         public ItemViewHolder(View v) {
             super(v);
@@ -120,6 +153,28 @@ public class CustomAdapter<T extends RealmObject> extends RecyclerView.Adapter {
                     Log.d(TAG, "Element " + getAdapterPosition() + " clicked.");
                 }
             });
+        }
+    }
+
+    public static class BillItemViewHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.item_img)
+        ImageView itemImg;
+        @BindView(R.id.item_name)
+        TextView itemName;
+        @BindView(R.id.item_price)
+        TextView itemPrice;
+        @BindView(R.id.number_picker_horizontal)
+        ScrollableNumberPicker picker;
+//        @BindView(R.id.item_add)
+//        Button itemAdd;
+//        @BindView(R.id.item_count)
+//        Button itemCount;
+//        @BindView(R.id.item_sub)
+//        Button itemSub;
+
+        public BillItemViewHolder(View v) {
+            super(v);
+            ButterKnife.bind(this, v);
         }
     }
 

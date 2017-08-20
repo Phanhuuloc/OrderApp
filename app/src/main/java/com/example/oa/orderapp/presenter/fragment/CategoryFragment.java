@@ -33,10 +33,6 @@ public class CategoryFragment extends BaseFragment implements ListProviderView{
     ProviderPresenter presenter;
     private ProviderItemAdapter adapter;
 
-    public CategoryFragment() {
-
-    }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

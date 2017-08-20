@@ -29,7 +29,7 @@ public class ProviderDetailActivity extends BaseActivity implements ProviderDeta
     Toolbar toolbar;
     @BindView(R.id.textView)
     TextView textView;
-    @BindView(R.id.btn_navigate)
+    @BindView(R.id.btn_show_map)
     Button btnNavigate;
     @BindView(R.id.btn_pre_order)
     Button btnPreOrder;
@@ -82,10 +82,11 @@ public class ProviderDetailActivity extends BaseActivity implements ProviderDeta
     }
 
 
-    @OnClick({R.id.btn_navigate, R.id.btn_pre_order})
+    @OnClick({R.id.btn_show_map, R.id.btn_pre_order})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.btn_navigate:
+            case R.id.btn_show_map:
+                MapsActivity.start(this,0,0);
                 break;
             case R.id.btn_pre_order:
                 String id = provider.getUuid();

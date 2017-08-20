@@ -1,5 +1,6 @@
 package com.example.oa.orderapp.presenter.fragment;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import com.example.oa.orderapp.data.local.Value;
 import com.example.oa.orderapp.presenter.ListMenuPresenter;
 import com.example.oa.orderapp.presenter.activity.ProviderActivity;
+import com.example.oa.orderapp.presenter.adapter.Callback;
 import com.example.oa.orderapp.presenter.adapter.CustomAdapter;
 import com.example.oa.orderapp.presenter.di.components.UserComponent;
 import com.example.oa.orderapp.presenter.view.ListMenuView;
@@ -15,18 +17,33 @@ import com.example.oa.orderapp.presenter.view.ListMenuView;
 import javax.inject.Inject;
 
 import io.realm.RealmList;
+import io.realm.RealmObject;
 
 /**
  * Created by Phoenix on 7/10/17.
  */
 
-public class ListItemFragment extends RecyclerViewFragment<Value> implements ListMenuView{
+public class ListItemFragment extends RecyclerViewFragment<Value> implements ListMenuView {
     @Inject
     ListMenuPresenter presenter;
     private String providerId;
 
     public ListItemFragment() {
         mCurrentLayoutManagerType = TYPE_VERTICAL_LIST;
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        // This makes sure that the container activity has implemented
+        // the callback interface. If not, it throws an exception
+        try {
+            callback = (Callback<Value>) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement Callback<Value>");
+        }
     }
 
     @Override
@@ -52,6 +69,7 @@ public class ListItemFragment extends RecyclerViewFragment<Value> implements Lis
 
     @Override
     void initData() {
+        mAdapter.setCallback(callback);
         mAdapter.setType(CustomAdapter.TYPE_LIST_MON);
 //        mAdapter = new CustomAdapter<Menu>();
 //        mRecyclerView.setAdapter(mAdapter);
@@ -64,9 +82,10 @@ public class ListItemFragment extends RecyclerViewFragment<Value> implements Lis
     private void initDummyData() {
         mDataset = new RealmList();
         for (int i = 0; i < 50; i++) {
-            mDataset.add(new Value("Hoa don so "+i));
+            mDataset.add(new Value("Mon so "+i));
         }
 
         mAdapter.setItems(mDataset);
     }
+
 }

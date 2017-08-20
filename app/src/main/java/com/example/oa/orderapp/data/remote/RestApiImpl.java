@@ -4,6 +4,7 @@ import com.example.oa.orderapp.data.cache.ListCategoryCache;
 import com.example.oa.orderapp.data.cache.ListMenuCache;
 import com.example.oa.orderapp.data.cache.ListProviderCache;
 import com.example.oa.orderapp.data.local.Provider;
+import com.example.oa.orderapp.data.request.BillRequest;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -44,5 +45,10 @@ public class RestApiImpl implements RestApi {
     @Override
     public Observable<ListCategoryCache> getListCategory(String uid) {
         return this.r.getListCategory(uid);
+    }
+
+    @Override
+    public Observable<ListCategoryCache> sendBillReq(BillRequest request) {
+        return this.r.sendBillReq(request);
     }
 }

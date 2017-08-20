@@ -4,6 +4,7 @@ import com.example.oa.orderapp.data.cache.ListCategoryCache;
 import com.example.oa.orderapp.data.cache.ListMenuCache;
 import com.example.oa.orderapp.data.cache.ListProviderCache;
 import com.example.oa.orderapp.data.local.Provider;
+import com.example.oa.orderapp.data.request.BillRequest;
 
 import javax.inject.Singleton;
 
@@ -22,4 +23,6 @@ public interface RestApi {
     Observable<Provider> getProvider(String uid);
 
     Observable<ListCategoryCache> getListCategory(String uid);
+
+    Observable<ListCategoryCache> sendBillReq(BillRequest request);
 }

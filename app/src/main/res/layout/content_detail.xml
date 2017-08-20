@@ -10,7 +10,7 @@
     tools:showIn="@layout/activity_detail">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="344dp"
         android:gravity="center"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -18,8 +18,8 @@
         tools:layout_editor_absoluteX="8dp">
 
         <ImageView
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="158dp"
+            android:layout_height="152dp"
             android:scaleType="fitCenter"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/logo"/>
@@ -27,9 +27,8 @@
         <LinearLayout
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:background="@color/colorAccent"
-            android:paddingBottom="50dp"
             android:gravity="center">
 
             <TextView
@@ -51,7 +50,7 @@
             android:layout_weight="1">
 
             <Button
-                android:id="@+id/btn_navigate"
+                android:id="@+id/btn_show_map"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAllCaps="false"

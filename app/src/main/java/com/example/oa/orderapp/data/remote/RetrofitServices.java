@@ -4,8 +4,10 @@ import com.example.oa.orderapp.data.cache.ListCategoryCache;
 import com.example.oa.orderapp.data.cache.ListMenuCache;
 import com.example.oa.orderapp.data.cache.ListProviderCache;
 import com.example.oa.orderapp.data.local.Provider;
+import com.example.oa.orderapp.data.request.BillRequest;
 
 import io.reactivex.Observable;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 
@@ -25,4 +27,7 @@ public interface RetrofitServices {
 
     @GET("provider/{id}/category")
     Observable<ListCategoryCache> getListCategory(@Path("id") String uid);
+
+    @GET("bill")
+    Observable<ListCategoryCache> sendBillReq(@Body BillRequest request);
 }
