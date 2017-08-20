@@ -28,6 +28,9 @@ import com.example.oa.orderapp.presenter.fragment.RecyclerViewFragment;
 import com.example.oa.orderapp.presenter.view.BillRequestView;
 import com.example.oa.orderapp.presenter.view.CustomBadgeShape;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 
 import berlin.volders.badger.BadgeShape;
@@ -56,7 +59,7 @@ public class MenuActivity extends BaseActivity implements HasComponent<UserCompo
 
     CustomAdapter<Value> adapter;
 
-    RealmList purchaseList = new RealmList();
+    List purchaseList = new ArrayList();
 
     CountBadge.Factory ovalFactory;
     CountBadge.Factory squareFactory;
@@ -76,6 +79,8 @@ public class MenuActivity extends BaseActivity implements HasComponent<UserCompo
 
     private void initialize() {
         initializeComponent();
+        component.inject(this);
+        presenter.setView(this);
         initGUI();
         initBadge();
     }
@@ -161,12 +166,9 @@ public class MenuActivity extends BaseActivity implements HasComponent<UserCompo
                 .adapter(adapter, null)
                 .positiveText(R.string.accept)
                 .positiveFocus(true)
-                .onPositive(new MaterialDialog.SingleButtonCallback() {
-                    @Override
-                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                        BillRequest billRequest = BillRequest.from(purchaseList);
-                        presenter.sendBillReq(billRequest);
-                    }
+                .onPositive((dialog, which) -> {
+                    BillRequest billRequest = BillRequest.from(purchaseList);
+                    presenter.sendBillReq(billRequest);
                 })
                 .show();
 

@@ -1,6 +1,8 @@
 package com.example.oa.orderapp.presenter.di.components;
 
 
+import com.example.oa.orderapp.presenter.activity.BaseActivity;
+import com.example.oa.orderapp.presenter.activity.MenuActivity;
 import com.example.oa.orderapp.presenter.activity.ProviderDetailActivity;
 import com.example.oa.orderapp.presenter.di.PerActivity;
 import com.example.oa.orderapp.presenter.di.modules.ActivityModule;
@@ -22,6 +24,8 @@ public interface UserComponent extends ActivityComponent {
     void inject(ListItemFragment listItemFragment);
 
     void inject(ListCategoryFragment listCategoryFragment);
+
+    void inject(MenuActivity menuActivity);
 //  void inject(UserListFragment userListFragment);
 //  void inject(UserDetailsFragment userDetailsFragment);
 }

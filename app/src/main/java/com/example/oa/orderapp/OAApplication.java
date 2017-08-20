@@ -9,6 +9,8 @@ import com.example.oa.orderapp.presenter.di.components.DaggerApplicationComponen
 import com.example.oa.orderapp.presenter.di.modules.ApplicationModule;
 import com.example.oa.orderapp.presenter.di.modules.NetModule;
 import com.facebook.stetho.Stetho;
+import com.orhanobut.logger.AndroidLogAdapter;
+import com.orhanobut.logger.Logger;
 import com.squareup.leakcanary.LeakCanary;
 import com.uphyca.stetho_realm.RealmInspectorModulesProvider;
 
@@ -37,6 +39,7 @@ public class OAApplication extends Application implements AppConstants {
         initializeRealmDb();
         initializeStetho();
         initializeInjector();
+        Logger.addLogAdapter(new AndroidLogAdapter());
 
     }
 

@@ -9,6 +9,7 @@ import com.example.oa.orderapp.data.request.BillRequest;
 import io.reactivex.Observable;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 /**
@@ -28,6 +29,6 @@ public interface RetrofitServices {
     @GET("provider/{id}/category")
     Observable<ListCategoryCache> getListCategory(@Path("id") String uid);
 
-    @GET("bill")
+    @POST("bill")
     Observable<ListCategoryCache> sendBillReq(@Body BillRequest request);
 }

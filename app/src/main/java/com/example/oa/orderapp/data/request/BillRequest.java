@@ -2,6 +2,7 @@ package com.example.oa.orderapp.data.request;
 
 import com.example.oa.orderapp.data.local.Value;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.realm.RealmList;
@@ -65,7 +66,7 @@ public class BillRequest {
         this.listItem = listItem;
     }
 
-    public static BillRequest from(RealmList purchaseList) {
+    public static BillRequest from(List purchaseList) {
         BillRequest billRequest = new BillRequest();
         billRequest.setType("1");
         billRequest.setPrice("200000");
