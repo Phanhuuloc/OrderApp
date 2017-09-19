@@ -61,7 +61,6 @@ public class ProviderDetailActivity extends BaseActivity implements ProviderDeta
 
     private void initialize() {
         initData();
-        initializeComponent();
         initializeInjector();
     }
 

@@ -1,6 +1,5 @@
 package com.example.oa.orderapp.presenter.di.modules;
 
-import com.example.oa.orderapp.BuildConfig;
 import com.example.oa.orderapp.OAApplication;
 import com.example.oa.orderapp.common.Debug;
 import com.example.oa.orderapp.data.remote.RestApi;
@@ -9,8 +8,6 @@ import com.example.oa.orderapp.data.remote.RetrofitServices;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.ihsanbal.logging.Level;
-import com.ihsanbal.logging.LoggingInterceptor;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import java.net.CookieManager;
@@ -24,7 +21,6 @@ import dagger.Provides;
 import okhttp3.Cache;
 import okhttp3.JavaNetCookieJar;
 import okhttp3.OkHttpClient;
-import okhttp3.internal.platform.Platform;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -71,13 +67,13 @@ public class NetModule {
   @Singleton
   OkHttpClient provideOkhttpClient(Cache cache) {
     OkHttpClient.Builder client = new OkHttpClient.Builder();
-    client.addInterceptor(new LoggingInterceptor.Builder()
-                    .loggable(BuildConfig.DEBUG)
-                    .setLevel(Level.BASIC)
-                    .log(Platform.INFO)
-                    .request("Request")
-                    .response("Response")
-                    .addHeader("version", BuildConfig.VERSION_NAME));
+//    client.addInterceptor(new LoggingInterceptor.Builder()
+//                    .loggable(BuildConfig.DEBUG)
+//                    .setLevel(Level.BASIC)
+//                    .log(Platform.INFO)
+//                    .request("Request")
+//                    .response("Response")
+//                    .addHeader("version", BuildConfig.VERSION_NAME);
     client.cache(cache);
     client.connectTimeout(CONNECTION_TIMEOUT, TimeUnit.SECONDS)
             .writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)

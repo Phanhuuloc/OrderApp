@@ -2,7 +2,6 @@ package com.example.oa.orderapp.presenter.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
@@ -12,7 +11,6 @@ import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.oa.orderapp.R;
 import com.example.oa.orderapp.data.local.Category;
@@ -20,7 +18,6 @@ import com.example.oa.orderapp.data.local.Value;
 import com.example.oa.orderapp.data.request.BillRequest;
 import com.example.oa.orderapp.presenter.BillRequestPresenter;
 import com.example.oa.orderapp.presenter.adapter.CustomAdapter;
-import com.example.oa.orderapp.presenter.di.HasComponent;
 import com.example.oa.orderapp.presenter.di.components.UserComponent;
 import com.example.oa.orderapp.presenter.fragment.ListCategoryFragment;
 import com.example.oa.orderapp.presenter.fragment.ListItemFragment;
@@ -38,7 +35,6 @@ import berlin.volders.badger.Badger;
 import berlin.volders.badger.CountBadge;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.realm.RealmList;
 import io.realm.RealmModel;
 
 import static com.example.oa.orderapp.presenter.adapter.CustomAdapter.TYPE_LIST_PURCHASE;
@@ -47,8 +43,7 @@ import static com.example.oa.orderapp.presenter.adapter.CustomAdapter.TYPE_LIST_
  * Created by Phoenix on 7/10/17.
  */
 
-public class MenuActivity extends BaseActivity implements HasComponent<UserComponent>,
-        RecyclerViewFragment.Callback, BillRequestView {
+public class MenuActivity extends BaseActivity implements RecyclerViewFragment.Callback, BillRequestView {
 
     @BindView(R.id.list_item_fragment)
     FrameLayout sampleContentFragment;
@@ -78,7 +73,6 @@ public class MenuActivity extends BaseActivity implements HasComponent<UserCompo
     }
 
     private void initialize() {
-        initializeComponent();
         component.inject(this);
         presenter.setView(this);
         initGUI();
@@ -89,7 +83,7 @@ public class MenuActivity extends BaseActivity implements HasComponent<UserCompo
         ovalFactory = new CountBadge.Factory(this, BadgeShape.oval(1f, 2f, Gravity.BOTTOM));
         squareFactory = new CountBadge.Factory(this, BadgeShape.square(1f, Gravity.NO_GRAVITY, .5f));
         circleFactory = new CountBadge.Factory(new CustomBadgeShape(this, .5f, Gravity.END | Gravity.TOP),
-                getResources().getColor(R.color.orange),getResources().getColor(R.color.green));
+                getResources().getColor(R.color.orange), getResources().getColor(R.color.green));
     }
 
     // Menu icons are inflated just as they were with actionbar
@@ -132,11 +126,6 @@ public class MenuActivity extends BaseActivity implements HasComponent<UserCompo
         transaction.commit();
     }
 
-    @Override
-    public UserComponent getComponent() {
-        return component;
-    }
-
     public static void start(BaseActivity activity, String id) {
         Intent i = new Intent(activity, MenuActivity.class);
         i.putExtra(ProviderActivity.ID, id);
@@ -156,7 +145,7 @@ public class MenuActivity extends BaseActivity implements HasComponent<UserCompo
     }
 
     private void showPurchaseList() {
-        if(purchaseList.isEmpty()) return;
+        if (purchaseList.isEmpty()) return;
         adapter = new CustomAdapter<Value>();
         adapter.setType(TYPE_LIST_PURCHASE);
 

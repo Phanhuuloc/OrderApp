@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.oa.orderapp.OAApplication;
 import com.example.oa.orderapp.data.local.Value;
 import com.example.oa.orderapp.presenter.ListMenuPresenter;
 import com.example.oa.orderapp.presenter.activity.ProviderActivity;
@@ -53,7 +54,7 @@ public class ListItemFragment extends RecyclerViewFragment<Value> implements Lis
         // Initialize dataset, this data would usually come from a local content provider or
         // remote server.
         providerId = getArguments().getString(ProviderActivity.ID);
-        this.getComponent(UserComponent.class).inject(this);
+        OAApplication.userComponent.inject(this);
         presenter.setView(this);
     }
 

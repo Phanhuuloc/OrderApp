@@ -4,9 +4,10 @@ import android.app.Application;
 
 import com.example.oa.orderapp.common.AppConstants;
 import com.example.oa.orderapp.data.RealmSharedModule;
-import com.example.oa.orderapp.presenter.di.components.ApplicationComponent;
-import com.example.oa.orderapp.presenter.di.components.DaggerApplicationComponent;
-import com.example.oa.orderapp.presenter.di.modules.ApplicationModule;
+import com.example.oa.orderapp.presenter.di.components.DaggerUserComponent;
+import com.example.oa.orderapp.presenter.di.components.UserComponent;
+import com.example.oa.orderapp.presenter.di.modules.AppModule;
+import com.example.oa.orderapp.presenter.di.modules.DataModule;
 import com.example.oa.orderapp.presenter.di.modules.NetModule;
 import com.facebook.stetho.Stetho;
 import com.orhanobut.logger.AndroidLogAdapter;
@@ -19,15 +20,14 @@ import java.util.Locale;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 
-
 /**
- * Android Main Application
+ *
  */
 public class OAApplication extends Application implements AppConstants {
 
     public static OAApplication instance = null;
     public static String LANGUAGE_DEVICE = "";
-    private ApplicationComponent applicationComponent;
+    public static UserComponent userComponent;
 
     @Override
     public void onCreate() {
@@ -73,14 +73,11 @@ public class OAApplication extends Application implements AppConstants {
 
 
     private void initializeInjector() {
-        this.applicationComponent = DaggerApplicationComponent.builder()
-                .applicationModule(new ApplicationModule(this))
-                .netModule(new NetModule("http://192.168.1.9:8040/"))
+        this.userComponent = DaggerUserComponent.builder()
+                .appModule(new AppModule(this))
+                .netModule(new NetModule("http://192.168.0.54:9999/"))
+                .dataModule(new DataModule())
                 .build();
-    }
-
-    public ApplicationComponent getApplicationComponent() {
-        return this.applicationComponent;
     }
 
     private void initializeLeakDetection() {

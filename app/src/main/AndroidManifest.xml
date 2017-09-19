@@ -34,6 +34,7 @@
         <activity android:name=".presenter.activity.ProviderActivity" />
         <activity
             android:name=".presenter.activity.ProviderDetailActivity"
+            android:exported="true"
             android:label="@string/title_activity_detail" />
         <activity
             android:name=".presenter.activity.SignInActivity"

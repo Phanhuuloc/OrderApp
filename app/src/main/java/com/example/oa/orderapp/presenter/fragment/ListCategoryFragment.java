@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.oa.orderapp.OAApplication;
 import com.example.oa.orderapp.data.local.Category;
 import com.example.oa.orderapp.presenter.ListCategoryPresenter;
 import com.example.oa.orderapp.presenter.activity.ProviderActivity;
@@ -35,7 +36,7 @@ public class ListCategoryFragment extends RecyclerViewFragment implements ListCa
         // remote server.
         providerId = getArguments().getString(ProviderActivity.ID);
 
-        this.getComponent(UserComponent.class).inject(this);
+        OAApplication.userComponent.inject(this);
         presenter.setView(this);
     }
 
@@ -47,8 +48,6 @@ public class ListCategoryFragment extends RecyclerViewFragment implements ListCa
     @Override
     void initData() {
         mAdapter.setType(CustomAdapter.TYPE_LIST_CATEGORY);
-//        mAdapter = new CustomAdapter<Category>();
-//        mRecyclerView.setAdapter(mAdapter);
         presenter.getListCategory(providerId);
         initDummyData();
     }

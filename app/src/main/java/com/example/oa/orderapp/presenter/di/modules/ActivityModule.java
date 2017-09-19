@@ -18,8 +18,6 @@ package com.example.oa.orderapp.presenter.di.modules;
 import android.app.Activity;
 
 
-import com.example.oa.orderapp.presenter.di.PerActivity;
-
 import dagger.Module;
 import dagger.Provides;
 
@@ -38,7 +36,6 @@ public class ActivityModule {
   * Expose the activity to dependents in the graph.
   */
   @Provides
-  @PerActivity
   Activity activity() {
     return this.activity;
   }

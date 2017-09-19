@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.oa.orderapp.OAApplication;
 import com.example.oa.orderapp.R;
 import com.example.oa.orderapp.data.local.Provider;
 import com.example.oa.orderapp.presenter.ProviderPresenter;
@@ -37,7 +38,7 @@ public class CategoryFragment extends BaseFragment implements ListProviderView{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.getComponent(UserComponent.class).inject(this);
+        OAApplication.userComponent.inject(this);
         presenter.setView(this);
     }
 
