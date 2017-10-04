@@ -20,8 +20,8 @@ public class BillRequestPresenter {
         this.billRequestPresenterUC = billRequestPresenterUC;
     }
 
-    public void sendBillReq(BillRequest billRequest) {
-        billRequestPresenterUC.execute(new BillRequestObserver(),new BillRequestPresenterUC.Param(billRequest));
+    public void sendBillReq(String providerId, BillRequest billRequest) {
+        billRequestPresenterUC.execute(new BillRequestObserver(),new BillRequestPresenterUC.Param(providerId, billRequest));
     }
 
     public void setView(BillRequestView view) {

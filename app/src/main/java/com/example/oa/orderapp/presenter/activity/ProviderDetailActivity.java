@@ -7,12 +7,16 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.oa.orderapp.R;
 import com.example.oa.orderapp.data.local.Provider;
 import com.example.oa.orderapp.presenter.ProviderDetailsPresenter;
 import com.example.oa.orderapp.presenter.view.ProviderDetailView;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 import org.parceler.Parcels;
 
@@ -25,6 +29,8 @@ import butterknife.OnClick;
 public class ProviderDetailActivity extends BaseActivity implements ProviderDetailView {
 
     public static final String DATA = "provider_data";
+    @BindView(R.id.itemAvatar)
+    ImageView itemAvatar;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.textView)
@@ -71,7 +77,7 @@ public class ProviderDetailActivity extends BaseActivity implements ProviderDeta
         }
 
         if (provider != null)
-            renderNetData(provider);
+            renderData(provider);
     }
 
     private void initializeInjector() {
@@ -95,7 +101,8 @@ public class ProviderDetailActivity extends BaseActivity implements ProviderDeta
     }
 
     @Override
-    public void renderNetData(Provider item) {
+    public void renderData(Provider item) {
+        Picasso.with(this).load(item.getImage()).into(itemAvatar);
         textView.setText(item.getName());
     }
 }

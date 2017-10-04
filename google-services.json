@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1039905424809",
+    "project_id": "oder-demo-171913"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1039905424809:android:219dce32b1eae23d",
+        "android_client_info": {
+          "package_name": "com.example.oa.orderapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1039905424809-323636mi6u24v1qgof9r0qohb4vovb3f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.oa.orderapp",
+            "certificate_hash": "78a562a0522562c92ac5062810aa5147a154dbce"
+          }
+        },
+        {
+          "client_id": "1039905424809-opblf4n1cqmo4lljvago87k84fpkl4jt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDH35Dd8oJQFaUMja6ZOTXowg3F6b9WmLY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

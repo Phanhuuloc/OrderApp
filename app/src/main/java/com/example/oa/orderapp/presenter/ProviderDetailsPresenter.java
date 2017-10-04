@@ -61,6 +61,6 @@ public class ProviderDetailsPresenter implements Presenter {
     }
 
     private void showProviders(Provider items) {
-        view.renderNetData(items);
+        view.renderData(items);
     }
 }

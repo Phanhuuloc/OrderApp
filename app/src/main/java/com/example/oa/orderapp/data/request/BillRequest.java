@@ -1,6 +1,8 @@
 package com.example.oa.orderapp.data.request;
 
 import com.example.oa.orderapp.data.local.Value;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,10 +31,16 @@ import io.realm.RealmList;
  * }
  */
 public class BillRequest {
-    String type;
-    String price;
-    ObjRequest user;
-    List<Value> listItem;
+    @SerializedName("type")
+    @Expose
+    private String type;
+    @SerializedName("price")
+    @Expose
+    private long price;
+    //    ObjRequest user;
+    @SerializedName("mons")
+    @Expose
+    private List<Value> mons;
 
     public String getType() {
         return type;
@@ -42,36 +50,37 @@ public class BillRequest {
         this.type = type;
     }
 
-    public String getPrice() {
+    public long getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(long price) {
         this.price = price;
     }
 
-    public ObjRequest getUser() {
-        return user;
+//    public ObjRequest getUser() {
+//        return user;
+//    }
+
+//    public void setUser(ObjRequest user) {
+//        this.user = user;
+//    }
+
+    public List<Value> getMons() {
+        return mons;
     }
 
-    public void setUser(ObjRequest user) {
-        this.user = user;
+    public void setMons(List<Value> mons) {
+        this.mons = mons;
     }
 
-    public List<Value> getListItem() {
-        return listItem;
-    }
 
-    public void setListItem(List<Value> listItem) {
-        this.listItem = listItem;
-    }
-
-    public static BillRequest from(List purchaseList) {
+    public static BillRequest from(List<Value> purchaseList) {
         BillRequest billRequest = new BillRequest();
         billRequest.setType("1");
-        billRequest.setPrice("200000");
-        billRequest.setUser(new ObjRequest("f21b20cf-4335-4eed-ac72-14596b8b4394"));
-        billRequest.setListItem(purchaseList);
+        billRequest.setPrice(200000);
+//        billRequest.setUser(new ObjRequest("f21b20cf-4335-4eed-ac72-14596b8b4394"));
+        billRequest.setMons(purchaseList);
         return billRequest;
     }
 }

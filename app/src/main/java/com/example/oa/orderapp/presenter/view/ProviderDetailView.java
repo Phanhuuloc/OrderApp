@@ -9,5 +9,5 @@ import io.realm.RealmList;
  */
 
 public interface ProviderDetailView {
-    void renderNetData(Provider items);
+    void renderData(Provider items);
 }

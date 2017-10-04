@@ -3,8 +3,6 @@ package com.example.oa.orderapp.presenter.di.modules;
 import com.example.oa.orderapp.OAApplication;
 import com.example.oa.orderapp.common.Debug;
 import com.example.oa.orderapp.data.remote.RestApi;
-import com.example.oa.orderapp.data.remote.RestApiImpl;
-import com.example.oa.orderapp.data.remote.RetrofitServices;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -23,7 +21,7 @@ import okhttp3.JavaNetCookieJar;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 
 /**
@@ -59,6 +57,7 @@ public class NetModule {
 //            .registerTypeAdapter(accountToken, RealmAccountDeserialize.INSTANCE)
 //            .registerTypeAdapter(brandToken, RealmBrandDeserialize.INSTANCE)
             .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+            .setLenient()
             .create();
 
   }
@@ -100,6 +99,7 @@ public class NetModule {
   @Singleton
   Retrofit provideRetrofit(Gson gson, OkHttpClient okHttpClient) {
     Retrofit retrofit = new Retrofit.Builder()
+            .addConverterFactory(ScalarsConverterFactory.create())
             .addConverterFactory(GsonConverterFactory.create(gson))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .baseUrl(mBaseUrl)
@@ -111,14 +111,8 @@ public class NetModule {
 
   @Provides
   @Singleton
-  RestApi provideRestApi(RestApiImpl restApi) {
-    return restApi;
-  }
-
-  @Provides
-  @Singleton
-  RetrofitServices provideRetrofitServices(Retrofit retrofit) {
-    return retrofit.create(RetrofitServices.class);
+  RestApi provideRetrofitServices(Retrofit retrofit) {
+    return retrofit.create(RestApi.class);
   }
 
 }

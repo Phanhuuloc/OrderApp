@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.oa.orderapp.R;
 import com.example.oa.orderapp.data.local.Provider;
+import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -53,6 +54,7 @@ public class ProviderItemAdapter extends BaseRecyclerAdapter {
         if (holder instanceof ImageViewHolder) {
             ImageViewHolder viewHolder = (ImageViewHolder) holder;
             viewHolder.setData(provider);
+            Picasso.with(mActivity).load(provider.getImage()).into(viewHolder.itemAvatar);
             viewHolder.itemTitle.setText(provider.getName());
             viewHolder.itemDescription.setText(provider.getDescription());
             viewHolder.itemAddress.setText(provider.getAddress());

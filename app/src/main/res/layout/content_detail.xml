@@ -1,83 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout android:gravity="center"
+    android:layout_height="wrap_content"
+    android:layout_width="344dp"
+    android:orientation="vertical"
+    tools:layout_editor_absoluteX="8dp"
+    tools:layout_editor_absoluteY="0dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.oa.orderapp.presenter.activity.ProviderDetailActivity"
-    tools:showIn="@layout/activity_detail">
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:id="@+id/itemAvatar"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="150dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:scaleType="fitCenter" />
 
     <LinearLayout
-        android:layout_width="344dp"
+
+        android:background="@color/colorAccent"
         android:gravity="center"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="8dp">
+        android:layout_height="48dp"
+        android:layout_width="match_parent">
 
-        <ImageView
-            android:layout_width="158dp"
-            android:layout_height="152dp"
-            android:scaleType="fitCenter"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/logo"/>
-
-        <LinearLayout
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:background="@color/colorAccent"
-            android:gravity="center">
-
-            <TextView
-
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/colorAccent"
-                android:text="Cafe Nui"
-                android:textColor="@color/colorPrimary"
-                android:textSize="36sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_weight="1">
-
-            <Button
-                android:id="@+id/btn_show_map"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAllCaps="false"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="5dp"
-                android:text="Chi duong"
-                android:layout_weight="0.5"/>
-            <Button
-                android:id="@+id/btn_pre_order"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAllCaps="false"
-                android:layout_weight="0.5"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="10dp"
-                android:text="Dat truoc"/>
-        </LinearLayout>
         <TextView
-            android:layout_width="match_parent"
+            android:background="@color/colorAccent"
+            android:id="@+id/textView"
             android:layout_height="wrap_content"
-            android:text="Danh gia:"/>
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        </android.support.v7.widget.RecyclerView>
+            android:layout_width="wrap_content"
+            android:text="Cafe Nui"
+            android:textColor="@color/colorPrimary"
+            android:textSize="36sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_show_map"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="0.5"
+            android:layout_width="wrap_content"
+            android:text="Chi duong"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_pre_order"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="0.5"
+            android:layout_width="wrap_content"
+            android:text="Dat truoc"
+            android:textAllCaps="false" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="Danh gia:" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
+</LinearLayout>

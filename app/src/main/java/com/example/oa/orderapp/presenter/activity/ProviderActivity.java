@@ -11,8 +11,7 @@ import android.view.Menu;
 
 import com.example.oa.orderapp.R;
 import com.example.oa.orderapp.presenter.adapter.CustomPagerAdapter;
-import com.example.oa.orderapp.presenter.di.components.UserComponent;
-import com.example.oa.orderapp.presenter.fragment.CategoryFragment;
+import com.example.oa.orderapp.presenter.fragment.ProviderFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -40,8 +39,6 @@ public class ProviderActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
         ButterKnife.bind(this);
-
-
         initialize();
     }
 
@@ -72,10 +69,9 @@ public class ProviderActivity extends BaseActivity {
     }
 
     private void setupViewPager() {
-        for (int i=0;i<countTab;i++) {
-
+        for (int i = 0; i < countTab; i++) {
             Bundle bundle = new Bundle();
-            Fragment fragment = Fragment.instantiate(this, CategoryFragment.class.getName(), bundle);
+            Fragment fragment = Fragment.instantiate(this, ProviderFragment.class.getName(), bundle);
             pagerAdapter.addFragment(fragment);
         }
         viewPager.setAdapter(pagerAdapter);

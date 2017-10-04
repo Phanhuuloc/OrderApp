@@ -54,7 +54,7 @@ public class MenuActivity extends BaseActivity implements RecyclerViewFragment.C
 
     CustomAdapter<Value> adapter;
 
-    List purchaseList = new ArrayList();
+    List<Value> purchaseList = new ArrayList();
 
     CountBadge.Factory ovalFactory;
     CountBadge.Factory squareFactory;
@@ -156,8 +156,9 @@ public class MenuActivity extends BaseActivity implements RecyclerViewFragment.C
                 .positiveText(R.string.accept)
                 .positiveFocus(true)
                 .onPositive((dialog, which) -> {
+                    String providerId = getIntent().getStringExtra(ProviderActivity.ID);
                     BillRequest billRequest = BillRequest.from(purchaseList);
-                    presenter.sendBillReq(billRequest);
+                    presenter.sendBillReq(providerId, billRequest);
                 })
                 .show();
 
@@ -177,7 +178,7 @@ public class MenuActivity extends BaseActivity implements RecyclerViewFragment.C
 
     private void unSelectItem(Object item) {
         if (item instanceof Value) {
-            RealmModel value = (RealmModel) item;
+            Value value = (Value) item;
             purchaseList.add(value);
         } else if (item instanceof Category) {
 

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -24,6 +25,8 @@ import butterknife.OnClick;
 class ImageViewHolder extends RecyclerView.ViewHolder {
     Provider data;
     Context context;
+    @BindView(R.id.avatar)
+    ImageView itemAvatar;
     @BindView(R.id.item_title)
     TextView itemTitle;
     @BindView(R.id.item_address)

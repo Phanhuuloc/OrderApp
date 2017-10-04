@@ -23,7 +23,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import io.realm.RealmList;
 
-public class CategoryFragment extends BaseFragment implements ListProviderView{
+public class ProviderFragment extends BaseFragment implements ListProviderView{
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
@@ -32,6 +32,7 @@ public class CategoryFragment extends BaseFragment implements ListProviderView{
 
     @Inject
     ProviderPresenter presenter;
+
     private ProviderItemAdapter adapter;
 
 

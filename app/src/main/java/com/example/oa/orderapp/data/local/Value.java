@@ -1,6 +1,7 @@
 package com.example.oa.orderapp.data.local;
 
 import com.example.oa.orderapp.data.ODObject;
+import com.google.gson.annotations.SerializedName;
 
 import org.parceler.Parcel;
 
@@ -16,10 +17,14 @@ import io.realm.annotations.Ignore;
         analyze = {Value.class})
 public class Value extends RealmObject implements ODObject {
     @Ignore
-    private String uuid;
+//    private String uuid;
+    @SerializedName("name")
     private String name;
+    @SerializedName("price")
     private int price;
+    @SerializedName("description")
     private String description;
+    @SerializedName("note")
     private String note;
 
     public Value() {
@@ -29,13 +34,13 @@ public class Value extends RealmObject implements ODObject {
         this.name = name;
     }
 
-    public String getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
-    }
+//    public String getUuid() {
+//        return uuid;
+//    }
+//
+//    public void setUuid(String uuid) {
+//        this.uuid = uuid;
+//    }
 
     public String getName() {
         return name;

@@ -87,6 +87,8 @@ dependencies {
     annotationProcessor 'org.parceler:parceler:1.1.8'
     compile 'com.orhanobut:logger:1.15'
 
+    compile 'com.squareup.retrofit2:converter-scalars:2.3.0'
+
     compile('com.github.ihsanbal:LoggingInterceptor:2.0.2') {
         exclude group: 'org.json', module: 'json'
     }
