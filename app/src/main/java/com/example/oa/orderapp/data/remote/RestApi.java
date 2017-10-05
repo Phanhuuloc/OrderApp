@@ -9,12 +9,16 @@ import com.example.oa.orderapp.data.request.BillRequest;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import io.reactivex.Observable;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
+import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
+import retrofit2.http.Headers;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
@@ -39,18 +43,20 @@ public interface RestApi {
     @GET("provider/{id}/category")
     Observable<ListCategoryCache> getListCategory(@Path("id") String uid);
 
-//    @Headers("Content-Type: application/json")
-//    @FormUrlEncoded
-//    @POST("bill")
-//    Observable<ListCategoryCache> sendBillReq(@Body BillRequest request);
-
-//    @Headers("Content-Type: application/json")
-//    @FormUrlEncoded
-//    @POST("bill")
-//    Observable<ListCategoryCache> sendBillReq(@Body BillRequest req);
-
-//    @Multipart
+    @Headers({"Content-Type: application/json;charset=UTF-8",
+            "Accept:application/json",
+            "Accept-Encoding:gzip, deflate",
+            "Accept-Language:en"})
     @POST("bill")
-    Observable<ListCategoryCache> sendBillReq(@Query("puid") String providerId, @Query("type") String type, @Query("price") long price);
+    Observable<ListCategoryCache> sendBillReq(@Body BillRequest req);
+
+    //    @Multipart
+    @Headers({"Content-Type: application/json;charset=UTF-8",
+            "Accept:application/json, text/javascript, */*; q=0.01",
+            "Accept-Encoding:gzip, deflate",
+            "Accept-Language:en"})
+    @FormUrlEncoded
+    @POST("bill")
+    Observable<ListCategoryCache> sendBillReq(@Field("price") long data);
 }
 

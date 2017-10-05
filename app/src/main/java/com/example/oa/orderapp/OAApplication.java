@@ -39,7 +39,7 @@ public class OAApplication extends Application implements AppConstants {
         initializeRealmDb();
         initializeStetho();
         initializeInjector();
-        Logger.addLogAdapter(new AndroidLogAdapter());
+//        Logger.addLogAdapter(new AndroidLogAdapter());
 
     }
 
@@ -75,7 +75,7 @@ public class OAApplication extends Application implements AppConstants {
     private void initializeInjector() {
         this.userComponent = DaggerUserComponent.builder()
                 .appModule(new AppModule(this))
-                .netModule(new NetModule("http://192.168.1.5:8800/"))
+                .netModule(new NetModule("http://192.168.1.8:8800/"))
                 .dataModule(new DataModule())
                 .build();
     }
