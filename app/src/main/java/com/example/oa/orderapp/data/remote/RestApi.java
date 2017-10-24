@@ -15,6 +15,7 @@ import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
+import retrofit2.http.Streaming;
 
 /**
  * Created by Phoenix on 6/14/17.
@@ -39,7 +40,7 @@ public interface RestApi {
             "Accept-Encoding:gzip, deflate",
             "Accept-Language:en"})
     @POST("bill")
-    Observable<ListCategoryCache> sendBillReq(@Body BillRequest req);
+    Observable<ListCategoryCache> sendBillReq(@Body BillRequest req, @Query("pid") String pid);
 
 }
 

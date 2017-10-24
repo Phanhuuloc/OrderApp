@@ -31,14 +31,16 @@ public class BillRequestPresenterUC extends UseCase<ListCategoryCache, BillReque
     @Override
     Observable<ListCategoryCache> buildUseCaseObservable(Param param) {
         Preconditions.checkNotNull(param);
-        return restApi.sendBillReq(param.request);
+        return restApi.sendBillReq(param.request, param.pid);
 
     }
 
     public static class Param {
+        private final String pid;
         private final BillRequest request;
 
-        public Param(BillRequest request) {
+        public Param(String pid, BillRequest request) {
+            this.pid = pid;
             this.request = request;
         }
     }
