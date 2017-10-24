@@ -5,17 +5,17 @@ import com.google.gson.annotations.SerializedName;
 
 import org.parceler.Parcel;
 
-import io.realm.ValueRealmProxy;
+import io.realm.MonRealmProxy;
 import io.realm.RealmObject;
 import io.realm.annotations.Ignore;
 
 /**
  * Created by Phoenix on 6/14/17.
  */
-@Parcel(implementations = {ValueRealmProxy.class},
+@Parcel(implementations = {MonRealmProxy.class},
         value = Parcel.Serialization.BEAN,
-        analyze = {Value.class})
-public class Value extends RealmObject implements ODObject {
+        analyze = {Mon.class})
+public class Mon extends RealmObject implements ODObject {
     @Ignore
 //    private String uuid;
     @SerializedName("name")
@@ -27,10 +27,10 @@ public class Value extends RealmObject implements ODObject {
     @SerializedName("note")
     private String note;
 
-    public Value() {
+    public Mon() {
     }
 
-    public Value(String name) {
+    public Mon(String name) {
         this.name = name;
     }
 

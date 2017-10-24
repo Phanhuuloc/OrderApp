@@ -10,10 +10,7 @@ import android.view.ViewGroup;
 import android.widget.RadioButton;
 
 import com.example.oa.orderapp.R;
-import com.example.oa.orderapp.data.local.Value;
 import com.example.oa.orderapp.presenter.adapter.CustomAdapter;
-
-import java.util.List;
 
 import io.realm.RealmList;
 import io.realm.RealmObject;
@@ -21,7 +18,6 @@ import io.realm.RealmObject;
 /**
  * Created by Phoenix on 7/10/17.
  */
-
 public abstract class RecyclerViewFragment<T extends RealmObject> extends BaseFragment {
 
     private static final String TAG = "RecyclerViewFragment";
@@ -51,9 +47,6 @@ public abstract class RecyclerViewFragment<T extends RealmObject> extends BaseFr
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // Initialize dataset, this data would usually come from a local content provider or
-        // remote server.
         Bundle b = getArguments();
         if (b != null)
             mCurrentLayoutManagerType = getArguments().getInt(KEY_LAYOUT_MANAGER);
@@ -80,7 +73,6 @@ public abstract class RecyclerViewFragment<T extends RealmObject> extends BaseFr
         setRecyclerViewLayoutManager(mCurrentLayoutManagerType);
 
 
-        // Set CustomAdapter as the adapter for RecyclerView.
         mRecyclerView.setAdapter(mAdapter);
 
         initData();

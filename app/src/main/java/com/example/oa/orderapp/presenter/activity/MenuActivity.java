@@ -14,13 +14,12 @@ import android.widget.TextView;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.oa.orderapp.R;
 import com.example.oa.orderapp.data.local.Category;
-import com.example.oa.orderapp.data.local.Value;
+import com.example.oa.orderapp.data.local.Mon;
 import com.example.oa.orderapp.data.request.BillRequest;
 import com.example.oa.orderapp.presenter.BillRequestPresenter;
 import com.example.oa.orderapp.presenter.adapter.CustomAdapter;
-import com.example.oa.orderapp.presenter.di.components.UserComponent;
 import com.example.oa.orderapp.presenter.fragment.ListCategoryFragment;
-import com.example.oa.orderapp.presenter.fragment.ListItemFragment;
+import com.example.oa.orderapp.presenter.fragment.ListMonFragment;
 import com.example.oa.orderapp.presenter.fragment.RecyclerViewFragment;
 import com.example.oa.orderapp.presenter.view.BillRequestView;
 import com.example.oa.orderapp.presenter.view.CustomBadgeShape;
@@ -52,9 +51,9 @@ public class MenuActivity extends BaseActivity implements RecyclerViewFragment.C
     @BindView(R.id.sample_main_layout)
     RelativeLayout sampleMainLayout;
 
-    CustomAdapter<Value> adapter;
+    CustomAdapter<Mon> adapter;
 
-    List<Value> purchaseList = new ArrayList();
+    List<Mon> purchaseList = new ArrayList();
 
     CountBadge.Factory ovalFactory;
     CountBadge.Factory squareFactory;
@@ -90,7 +89,7 @@ public class MenuActivity extends BaseActivity implements RecyclerViewFragment.C
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_shop_cart, menu);
         badgeDrawable = Badger.sett(menu.findItem(R.id.miPurchase), circleFactory);
 
         return true;
@@ -113,7 +112,7 @@ public class MenuActivity extends BaseActivity implements RecyclerViewFragment.C
 
         Bundle b1 = new Bundle();
         b1.putString(ProviderActivity.ID, id);
-        RecyclerViewFragment fragment1 = new ListItemFragment();
+        RecyclerViewFragment fragment1 = new ListMonFragment();
         fragment1.setArguments(b1);
         transaction.replace(R.id.list_item_fragment, fragment1);
 
@@ -139,6 +138,9 @@ public class MenuActivity extends BaseActivity implements RecyclerViewFragment.C
             case R.id.miPurchase:
                 showPurchaseList();
                 return true;
+            case android.R.id.home:
+                this.finish();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -146,7 +148,7 @@ public class MenuActivity extends BaseActivity implements RecyclerViewFragment.C
 
     private void showPurchaseList() {
         if (purchaseList.isEmpty()) return;
-        adapter = new CustomAdapter<Value>();
+        adapter = new CustomAdapter<Mon>();
         adapter.setType(TYPE_LIST_PURCHASE);
 
         new MaterialDialog.Builder(this)
@@ -177,16 +179,16 @@ public class MenuActivity extends BaseActivity implements RecyclerViewFragment.C
     }
 
     private void unSelectItem(Object item) {
-        if (item instanceof Value) {
-            Value value = (Value) item;
-            purchaseList.add(value);
+        if (item instanceof Mon) {
+            Mon mon = (Mon) item;
+            purchaseList.add(mon);
         } else if (item instanceof Category) {
 
         }
     }
 
     private void selectItem(Object item) {
-        if (item instanceof Value) {
+        if (item instanceof Mon) {
             RealmModel value = (RealmModel) item;
             purchaseList.remove(value);
         } else if (item instanceof Category) {

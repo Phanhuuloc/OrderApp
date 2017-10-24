@@ -1,6 +1,7 @@
 package com.example.oa.orderapp;
 
 import android.app.Application;
+import android.support.compat.BuildConfig;
 
 import com.example.oa.orderapp.common.AppConstants;
 import com.example.oa.orderapp.data.RealmSharedModule;
@@ -75,7 +76,7 @@ public class OAApplication extends Application implements AppConstants {
     private void initializeInjector() {
         this.userComponent = DaggerUserComponent.builder()
                 .appModule(new AppModule(this))
-                .netModule(new NetModule("http://192.168.1.8:8800/"))
+                .netModule(new NetModule("http://192.168.1.3:8800/"))
                 .dataModule(new DataModule())
                 .build();
     }

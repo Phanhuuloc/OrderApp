@@ -3,7 +3,7 @@ package com.example.oa.orderapp.presenter;
 import com.example.oa.orderapp.data.cache.ListCategoryCache;
 import com.example.oa.orderapp.data.local.Category;
 import com.example.oa.orderapp.domain.interactor.DefaultObserver;
-import com.example.oa.orderapp.domain.interactor.GetListCategoryListUC;
+import com.example.oa.orderapp.domain.interactor.GetCategoryListUC;
 import com.example.oa.orderapp.presenter.view.ListCategoryView;
 
 import javax.inject.Inject;
@@ -15,12 +15,12 @@ import io.realm.RealmList;
  */
 
 public class ListCategoryPresenter implements Presenter{
-    private final GetListCategoryListUC getListCategoryListUC;
+    private final GetCategoryListUC getCategoryListUC;
     private ListCategoryView view;
 
     @Inject
-    public ListCategoryPresenter(GetListCategoryListUC getListCategoryListUC) {
-        this.getListCategoryListUC = getListCategoryListUC;
+    public ListCategoryPresenter(GetCategoryListUC getCategoryListUC) {
+        this.getCategoryListUC = getCategoryListUC;
     }
 
     public void setView(ListCategoryView view) {
@@ -43,7 +43,7 @@ public class ListCategoryPresenter implements Presenter{
     }
 
     public void getListCategory(String uid) {
-        getListCategoryListUC.execute(new ListCategoryObserver(),new GetListCategoryListUC.Param(uid));
+        getCategoryListUC.execute(new ListCategoryObserver(),new GetCategoryListUC.Param(uid));
     }
 
     private class ListCategoryObserver extends DefaultObserver<ListCategoryCache> {

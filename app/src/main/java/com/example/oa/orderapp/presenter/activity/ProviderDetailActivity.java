@@ -5,10 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.oa.orderapp.R;
@@ -16,7 +17,6 @@ import com.example.oa.orderapp.data.local.Provider;
 import com.example.oa.orderapp.presenter.ProviderDetailsPresenter;
 import com.example.oa.orderapp.presenter.view.ProviderDetailView;
 import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Target;
 
 import org.parceler.Parcels;
 
@@ -52,17 +52,34 @@ public class ProviderDetailActivity extends BaseActivity implements ProviderDeta
         context.startActivity(i);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_purchase_info, menu);
+        //Menu Resource, Menu
+        return true;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
+        setContentView(R.layout.activity_provider_detail);
         ButterKnife.bind(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         initialize();
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void initialize() {
@@ -91,7 +108,7 @@ public class ProviderDetailActivity extends BaseActivity implements ProviderDeta
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_show_map:
-                MapsActivity.start(this,0,0);
+                MapsActivity2.start(this,-34, 151);
                 break;
             case R.id.btn_pre_order:
                 String id = provider.getUuid();

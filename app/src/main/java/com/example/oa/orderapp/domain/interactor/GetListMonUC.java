@@ -14,11 +14,11 @@ import io.reactivex.Observable;
  * Created by Phoenix on 6/28/17.
  */
 
-public class GetListMenuUC extends UseCase<ListMenuCache, GetListMenuUC.Param> {
+public class GetListMonUC extends UseCase<ListMenuCache, GetListMonUC.Param> {
     private final RestApi restApi;
 
     @Inject
-    GetListMenuUC(ThreadExecutor threadExecutor, PostExecutionThread postExecutionThread, RestApi restApi) {
+    GetListMonUC(ThreadExecutor threadExecutor, PostExecutionThread postExecutionThread, RestApi restApi) {
         super(threadExecutor, postExecutionThread);
         this.restApi = restApi;
     }
@@ -26,14 +26,14 @@ public class GetListMenuUC extends UseCase<ListMenuCache, GetListMenuUC.Param> {
     @Override
     Observable<ListMenuCache> buildUseCaseObservable(Param param) {
         Preconditions.checkNotNull(param);
-        return restApi.getListMenu(param.name);
+        return restApi.getListMon(param.cid);
     }
 
     public static class Param {
-        public final String name;
+        public final String cid;
 
-        public Param(String name) {
-            this.name = name;
+        public Param(String cid) {
+            this.cid = cid;
         }
     }
 }

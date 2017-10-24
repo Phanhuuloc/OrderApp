@@ -10,7 +10,6 @@ import com.example.oa.orderapp.data.local.Category;
 import com.example.oa.orderapp.presenter.ListCategoryPresenter;
 import com.example.oa.orderapp.presenter.activity.ProviderActivity;
 import com.example.oa.orderapp.presenter.adapter.CustomAdapter;
-import com.example.oa.orderapp.presenter.di.components.UserComponent;
 import com.example.oa.orderapp.presenter.view.ListCategoryView;
 
 import javax.inject.Inject;
@@ -26,16 +25,11 @@ public class ListCategoryFragment extends RecyclerViewFragment implements ListCa
     ListCategoryPresenter presenter;
     private String providerId;
 
-    public ListCategoryFragment() {
-        mCurrentLayoutManagerType = TYPE_HORIZONTAL_LIST;
-    }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Initialize dataset, this data would usually come from a local content provider or
-        // remote server.
+        mCurrentLayoutManagerType = TYPE_HORIZONTAL_LIST;
         providerId = getArguments().getString(ProviderActivity.ID);
-
         OAApplication.userComponent.inject(this);
         presenter.setView(this);
     }
@@ -47,19 +41,20 @@ public class ListCategoryFragment extends RecyclerViewFragment implements ListCa
 
     @Override
     void initData() {
+        mCurrentLayoutManagerType = TYPE_HORIZONTAL_LIST;
         mAdapter.setType(CustomAdapter.TYPE_LIST_CATEGORY);
         presenter.getListCategory(providerId);
-        initDummyData();
+//        initDummyData();
     }
 
-    private void initDummyData() {
-        mDataset = new RealmList();
-        for (int i = 0; i < 50; i++) {
-            mDataset.add(new Category("#"+i));
-        }
-
-        mAdapter.setItems(mDataset);
-    }
+//    private void initDummyData() {
+//        mDataset = new RealmList();
+//        for (int i = 0; i < 50; i++) {
+//            mDataset.add(new Category("#"+i));
+//        }
+//
+//        mAdapter.setItems(mDataset);
+//    }
 
     @Override
     public void showListCategory(RealmList<Category> items) {

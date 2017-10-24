@@ -95,7 +95,7 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback, Lo
                     final CloudGeoPoint riderLocation = new CloudGeoPoint(usersCurrentLocation.getLatitude(), usersCurrentLocation.getLongitude());
                     final String[] reqActualName = new String[1];
 
-                    // Saves the requester's actual name
+                    // Saves the requester's actual cid
                     CloudQuery actualNameObject = new CloudQuery("User");
                     actualNameObject.equalTo("username", sharedPreferences.getString("currentUser", ""));
                     actualNameObject.find(new CloudObjectArrayCallback() {
@@ -454,7 +454,8 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback, Lo
         locIcon3 = BitmapUtils.getBitmapDescriptor(this,R.drawable.ic_location_on_24dp);
 
         // All location services
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
             // here to request the missing permissions, and then overriding

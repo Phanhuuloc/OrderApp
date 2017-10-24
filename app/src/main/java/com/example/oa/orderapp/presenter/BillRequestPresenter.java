@@ -21,7 +21,7 @@ public class BillRequestPresenter {
     }
 
     public void sendBillReq(String providerId, BillRequest billRequest) {
-        billRequestPresenterUC.execute(new BillRequestObserver(),new BillRequestPresenterUC.Param(providerId, billRequest));
+        billRequestPresenterUC.execute(new BillRequestObserver(),new BillRequestPresenterUC.Param(billRequest));
     }
 
     public void setView(BillRequestView view) {

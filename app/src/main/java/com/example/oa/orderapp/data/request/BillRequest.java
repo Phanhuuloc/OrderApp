@@ -1,13 +1,10 @@
 package com.example.oa.orderapp.data.request;
 
-import com.example.oa.orderapp.data.local.Value;
+import com.example.oa.orderapp.data.local.Mon;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import io.realm.RealmList;
 
 /**
  * Created by Phoenix on 8/20/17.
@@ -37,10 +34,9 @@ public class BillRequest {
     @SerializedName("price")
     @Expose
     private long price;
-    //    ObjRequest user;
     @SerializedName("mons")
     @Expose
-    private List<Value> mons;
+    private List<Mon> mons;
 
     public String getType() {
         return type;
@@ -58,24 +54,16 @@ public class BillRequest {
         this.price = price;
     }
 
-//    public ObjRequest getUser() {
-//        return user;
-//    }
-
-//    public void setUser(ObjRequest user) {
-//        this.user = user;
-//    }
-
-    public List<Value> getMons() {
+    public List<Mon> getMons() {
         return mons;
     }
 
-    public void setMons(List<Value> mons) {
+    public void setMons(List<Mon> mons) {
         this.mons = mons;
     }
 
 
-    public static BillRequest from(List<Value> purchaseList) {
+    public static BillRequest from(List<Mon> purchaseList) {
         BillRequest billRequest = new BillRequest();
         billRequest.setType("1");
         billRequest.setPrice(200000);

@@ -29,7 +29,7 @@ import android.widget.TextView;
 
 import com.example.oa.orderapp.R;
 import com.example.oa.orderapp.data.local.Category;
-import com.example.oa.orderapp.data.local.Value;
+import com.example.oa.orderapp.data.local.Mon;
 import com.example.oa.orderapp.presenter.fragment.RecyclerViewFragment;
 import com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker;
 
@@ -38,7 +38,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import io.realm.RealmObject;
 
 /**
@@ -52,7 +51,7 @@ public class CustomAdapter<T extends RealmObject> extends RecyclerView.Adapter {
 
     private List<T> items = new ArrayList<>();
     private int type;
-    private RecyclerViewFragment.Callback<Value> callback;
+    private RecyclerViewFragment.Callback<Mon> callback;
 
     public void setType(int type) {
         this.type = type;
@@ -71,7 +70,7 @@ public class CustomAdapter<T extends RealmObject> extends RecyclerView.Adapter {
 
         if (TYPE_LIST_MON == type) {
             View v = inflater.inflate(R.layout.mon_item, viewGroup, false);
-            return new ItemViewHolder(v);
+            return new MonViewHolder(v);
         } else if (TYPE_LIST_CATEGORY == type) {
             View v = inflater.inflate(R.layout.category_item, viewGroup, false);
             return new CategoryViewHolder(v);
@@ -88,9 +87,9 @@ public class CustomAdapter<T extends RealmObject> extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         Log.d(TAG, "Element " + position + " set.");
 
-        if (holder instanceof CustomAdapter.ItemViewHolder) {
-            ItemViewHolder viewHolder = (ItemViewHolder) holder;
-            Value data = (Value) items.get(position);
+        if (holder instanceof CustomAdapter.MonViewHolder) {
+            MonViewHolder viewHolder = (MonViewHolder) holder;
+            Mon data = (Mon) items.get(position);
             viewHolder.itemName.setText(data.getName());
             viewHolder.itemPrice.setText("" + data.getPrice());
             viewHolder.itemOrder.setOnClickListener(v -> {
@@ -109,7 +108,7 @@ public class CustomAdapter<T extends RealmObject> extends RecyclerView.Adapter {
             viewHolder.itemName.setText(data.getName());
         } else if (TYPE_LIST_PURCHASE == type) {
             BillItemViewHolder viewHolder = (BillItemViewHolder) holder;
-            Value data = (Value) items.get(position);
+            Mon data = (Mon) items.get(position);
             viewHolder.itemName.setText(data.getName());
             viewHolder.picker.setMinValue(1);
         }
@@ -122,14 +121,11 @@ public class CustomAdapter<T extends RealmObject> extends RecyclerView.Adapter {
         return items.size();
     }
 
-    public void setCallback(RecyclerViewFragment.Callback<Value> callback) {
+    public void setCallback(RecyclerViewFragment.Callback<Mon> callback) {
         this.callback = callback;
     }
 
-    /**
-     * Provide a reference to the type of views that you are using (custom MenuViewHolder)
-     */
-    public static class ItemViewHolder extends RecyclerView.ViewHolder {
+    public static class MonViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.item_img)
         ImageView itemImg;
         @BindView(R.id.item_name)
@@ -142,17 +138,11 @@ public class CustomAdapter<T extends RealmObject> extends RecyclerView.Adapter {
         Button itemUnOrder;
 
 
-        public ItemViewHolder(View v) {
+        public MonViewHolder(View v) {
             super(v);
             ButterKnife.bind(this, v);
 
-            // Define click listener for the MenuViewHolder's View.
-            v.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Log.d(TAG, "Element " + getAdapterPosition() + " clicked.");
-                }
-            });
+            v.setOnClickListener(v1 -> Log.d(TAG, "Element " + getAdapterPosition() + " clicked."));
         }
     }
 
@@ -178,28 +168,18 @@ public class CustomAdapter<T extends RealmObject> extends RecyclerView.Adapter {
         }
     }
 
-    /**
-     * Provide a reference to the type of views that you are using (custom MenuViewHolder)
-     */
     public static class CategoryViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.item_img)
         ImageView itemImg;
         @BindView(R.id.item_name)
         TextView itemName;
-//        @BindView(R.id.item_price)
-//        TextView itemPrice;
 
         public CategoryViewHolder(View v) {
             super(v);
             ButterKnife.bind(this, v);
 
             // Define click listener for the MenuViewHolder's View.
-            v.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Log.d(TAG, "Element " + getAdapterPosition() + " clicked.");
-                }
-            });
+            v.setOnClickListener(v1 -> Log.d(TAG, "Element " + getAdapterPosition() + " clicked."));
         }
     }
 

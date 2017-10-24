@@ -7,31 +7,23 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.oa.orderapp.OAApplication;
-import com.example.oa.orderapp.data.local.Value;
-import com.example.oa.orderapp.presenter.ListMenuPresenter;
+import com.example.oa.orderapp.data.local.Mon;
+import com.example.oa.orderapp.presenter.ListMonPresenter;
 import com.example.oa.orderapp.presenter.activity.ProviderActivity;
-import com.example.oa.orderapp.presenter.adapter.Callback;
 import com.example.oa.orderapp.presenter.adapter.CustomAdapter;
-import com.example.oa.orderapp.presenter.di.components.UserComponent;
-import com.example.oa.orderapp.presenter.view.ListMenuView;
+import com.example.oa.orderapp.presenter.view.ListMonView;
 
 import javax.inject.Inject;
 
 import io.realm.RealmList;
-import io.realm.RealmObject;
 
 /**
  * Created by Phoenix on 7/10/17.
  */
-
-public class ListItemFragment extends RecyclerViewFragment<Value> implements ListMenuView {
+public class ListMonFragment extends RecyclerViewFragment<Mon> implements ListMonView {
     @Inject
-    ListMenuPresenter presenter;
+    ListMonPresenter presenter;
     private String providerId;
-
-    public ListItemFragment() {
-        mCurrentLayoutManagerType = TYPE_VERTICAL_LIST;
-    }
 
     @Override
     public void onAttach(Activity activity) {
@@ -40,7 +32,7 @@ public class ListItemFragment extends RecyclerViewFragment<Value> implements Lis
         // This makes sure that the container activity has implemented
         // the callback interface. If not, it throws an exception
         try {
-            callback = (Callback<Value>) activity;
+            callback = (Callback<Mon>) activity;
         } catch (ClassCastException e) {
             throw new ClassCastException(activity.toString()
                     + " must implement Callback<Value>");
@@ -50,9 +42,7 @@ public class ListItemFragment extends RecyclerViewFragment<Value> implements Lis
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // Initialize dataset, this data would usually come from a local content provider or
-        // remote server.
+        mCurrentLayoutManagerType = TYPE_VERTICAL_LIST;
         providerId = getArguments().getString(ProviderActivity.ID);
         OAApplication.userComponent.inject(this);
         presenter.setView(this);
@@ -64,29 +54,17 @@ public class ListItemFragment extends RecyclerViewFragment<Value> implements Lis
     }
 
     @Override
-    public void renderNetData(RealmList<Value> items) {
+    public void renderNetData(RealmList<Mon> items) {
         mAdapter.setItems(items);
     }
 
     @Override
     void initData() {
+        mCurrentLayoutManagerType = TYPE_VERTICAL_LIST;
         mAdapter.setCallback(callback);
         mAdapter.setType(CustomAdapter.TYPE_LIST_MON);
-//        mAdapter = new CustomAdapter<Menu>();
-//        mRecyclerView.setAdapter(mAdapter);
-//        String id = "3818f7c2-f14b-4c97-b064-1cc85f1121c6";
-        presenter.getListMenu(providerId);
-
-        initDummyData();
+        presenter.getListMon("bf6fe58a-93da-4892-b5b8-86d24e23a44a");
     }
 
-    private void initDummyData() {
-        mDataset = new RealmList();
-        for (int i = 0; i < 50; i++) {
-            mDataset.add(new Value("Mon so "+i));
-        }
-
-        mAdapter.setItems(mDataset);
-    }
 
 }
